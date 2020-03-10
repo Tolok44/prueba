@@ -18,7 +18,7 @@ public class Acciones {
 	//Browser************************************************************************
 	//-------------------------------------------------------------------------------
 	public void Navegar(String URL){
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\Training\\Documents\\chromedriver.exe" );
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\Training\\Desktop\\Prueba\\prueba\\driver\\chromedriver.exe" );
 		this.driver = new ChromeDriver();
 		this.driver.navigate().to(URL);
 		

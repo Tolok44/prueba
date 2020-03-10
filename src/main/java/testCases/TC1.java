@@ -18,12 +18,12 @@ public class TC1 {
 		ArrayList<Step> ListaObjetosStep;
 		//Inicializa el WebDriver
 		WebDriver driver;
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\Training\\Desktop\\Prueba\\chromedriver.exe" );
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\Training\\Desktop\\Prueba\\prueba\\driver\\chromedriver.exe" );
 		 driver = new ChromeDriver();
 		 driverManager.setDriver(driver);
 		//Manda el driver a elemento
 		LeerXmls TC = new LeerXmls();		
-		ListaObjetosStep=TC.obtenObjetos("C:\\Users\\Training\\Desktop\\Prueba\\TC.xlsx");
+		ListaObjetosStep=TC.obtenObjetos("C:\\Users\\Training\\Desktop\\Prueba\\prueba\\excel\\TC.xlsx");
 		//lee cada uno de los steps
 		for(int x=1;x<ListaObjetosStep.size();x++) {
 			System.out.println(ListaObjetosStep.get(x).toString());
