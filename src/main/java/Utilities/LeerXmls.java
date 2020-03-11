@@ -35,7 +35,9 @@ public class LeerXmls {
 	      // Cadena que usamos para almacenar la lectura de la celda
 	      String Accion="",vAccion="",locator="",vLocator="";
 	      double Step=0; 
+	      double waitTime=0;
 	      boolean screenshot=false;
+	      
 	      Step aux;
 	      
 	     
@@ -55,7 +57,6 @@ public class LeerXmls {
 	            	  
 	            	  case 1: Accion = row.getCell(c).getStringCellValue();
 	            	  break;
-	            	  
 	            	  case 2: vAccion = row.getCell(c).getStringCellValue();
 	            	  break;
 	            	  
@@ -68,6 +69,9 @@ public class LeerXmls {
 	            	  case 5: screenshot = row.getCell(c).getBooleanCellValue();
 	            	  break;
 	            	  
+	            	  case 6: waitTime = row.getCell(c).getNumericCellValue();
+	            	  break;
+	            	  
 	            	  
 	            	  }
 	            	  }
@@ -76,7 +80,7 @@ public class LeerXmls {
 	            	  
 	            	  
 	              }
-	             aux = new Step(Step, Accion, vAccion, locator, vLocator,screenshot);
+	             aux = new Step(Step, Accion, vAccion, locator, vLocator,screenshot,waitTime);
 	             TC.add(aux);
 	             Accion="";
 	            vAccion="";

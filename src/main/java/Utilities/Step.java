@@ -10,22 +10,24 @@ public class Step {
 	public String locator;
 	public String valueLocator;
 	public boolean screenshot;
+	public double waitTime;
 	
 
-	public Step(double step, String accion,String vAccion, String locator, String vLocator,boolean screenshot) {
+	public Step(double step, String accion,String vAccion, String locator, String vLocator,boolean screenshot,double waitTime) {
 		this.step=step;
 		this.accion=accion;
 		this.valueAccion=vAccion;
 		this.locator=locator;
 		this.valueLocator=vLocator;
 		this.screenshot=screenshot;
+		this.waitTime=waitTime;
 		
 	}
 
 	@Override
 	public String toString() {
 		return "Step [step=" + step + ", accion=" + accion + ", vAccion=" + valueAccion + ", locator=" + locator
-				+ ", vLocator=" + valueLocator + ", screenshot= "+ screenshot+ "]";
+				+ ", vLocator=" + valueLocator + ", screenshot= "+ screenshot+", Wait Time= "+ waitTime+ "]";
 	}
 
 
@@ -84,6 +86,14 @@ public class Step {
 
 	public void setScreenshoot(boolean screenshot) {
 		this.screenshot = screenshot;
+	}
+
+	public double getWaitTime() {
+		return waitTime;
+	}
+
+	public void setWaitTime(double waitTime) {
+		this.waitTime = waitTime;
 	}
 	
 	
