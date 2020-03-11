@@ -9,10 +9,10 @@ public class Step {
 	public String valueAccion;
 	public String locator;
 	public String valueLocator;
-	public double screenshot;
+	public boolean screenshot;
 	
 
-	public Step(double step, String accion,String vAccion, String locator, String vLocator,double screenshot) {
+	public Step(double step, String accion,String vAccion, String locator, String vLocator,boolean screenshot) {
 		this.step=step;
 		this.accion=accion;
 		this.valueAccion=vAccion;
@@ -78,11 +78,11 @@ public class Step {
 		this.valueLocator = vLocator;
 	}
 
-	public double getScreenshoot() {
+	public boolean getScreenshoot() {
 		return screenshot;
 	}
 
-	public void setScreenshoot(double screenshot) {
+	public void setScreenshoot(boolean screenshot) {
 		this.screenshot = screenshot;
 	}
 	
