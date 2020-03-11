@@ -1,6 +1,7 @@
 package Utilities;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -89,6 +90,9 @@ public class DriverManager {
 		case "selectByIndex":
 			select = new Select(elementCreator(Obj));
 			select.selectByIndex(Integer.parseInt(Obj.getValueAccion()));
+			break;
+		case "wait":
+			driver.manage().timeouts().implicitlyWait(3,TimeUnit.SECONDS);
 			break;
 		}
 
