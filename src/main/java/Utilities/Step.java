@@ -1,10 +1,10 @@
 package Utilities;
 
-import java.util.ArrayList;
 
 public class Step {
-
+	
 	public double step;
+	public String description;
 	public String accion;
 	public String valueAccion;
 	public String locator;
@@ -13,8 +13,9 @@ public class Step {
 	public double waitTime;
 	
 
-	public Step(double step, String accion,String vAccion, String locator, String vLocator,boolean screenshot,double waitTime) {
+	public Step(double step, String description,String accion,String vAccion, String locator, String vLocator,boolean screenshot,double waitTime) {
 		this.step=step;
+		this.description=description;
 		this.accion=accion;
 		this.valueAccion=vAccion;
 		this.locator=locator;
@@ -26,7 +27,7 @@ public class Step {
 
 	@Override
 	public String toString() {
-		return "Step [step=" + step + ", accion=" + accion + ", vAccion=" + valueAccion + ", locator=" + locator
+		return "Step [step=" + step + "description= "+description+", accion=" + accion + ", vAccion=" + valueAccion + ", locator=" + locator
 				+ ", vLocator=" + valueLocator + ", screenshot= "+ screenshot+", Wait Time= "+ waitTime+ "]";
 	}
 

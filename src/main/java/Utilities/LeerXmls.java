@@ -23,9 +23,7 @@ public class LeerXmls {
 	   FileInputStream fis = new FileInputStream(new File(name));
 	      
 	      XSSFWorkbook workbook = new XSSFWorkbook(fis);
-	      XSSFSheet spreadsheet = workbook.getSheetAt(0);
-	      
-	      XSSFRow cell;       
+	      XSSFSheet spreadsheet = workbook.getSheetAt(0);   
 	      
 	      int rows = spreadsheet.getLastRowNum()+1;
 	   
@@ -33,7 +31,7 @@ public class LeerXmls {
 	      int cols = 0;            
 	    
 	      // Cadena que usamos para almacenar la lectura de la celda
-	      String Accion="",vAccion="",locator="",vLocator="";
+	      String action="",description="",vAccion="",locator="",vLocator="";
 	      double Step=0; 
 	      double waitTime=0;
 	      boolean screenshot=false;
@@ -55,21 +53,25 @@ public class LeerXmls {
 	            	  case 0: Step = row.getCell(c).getNumericCellValue();
 	            	  break;
 	            	  
-	            	  case 1: Accion = row.getCell(c).getStringCellValue();
-	            	  break;
-	            	  case 2: vAccion = row.getCell(c).getStringCellValue();
+	            	  case 1: action = row.getCell(c).getStringCellValue();
 	            	  break;
 	            	  
-	            	  case 3: locator = row.getCell(c).getStringCellValue();   	  
+	            	  case 2: description = row.getCell(c).getStringCellValue();
 	            	  break;
 	            	  
-	            	  case 4: vLocator = row.getCell(c).getStringCellValue(); 
+	            	  case 3: vAccion = row.getCell(c).getStringCellValue();
 	            	  break;
 	            	  
-	            	  case 5: screenshot = row.getCell(c).getBooleanCellValue();
+	            	  case 4: locator = row.getCell(c).getStringCellValue();   	  
 	            	  break;
 	            	  
-	            	  case 6: waitTime = row.getCell(c).getNumericCellValue();
+	            	  case 5: vLocator = row.getCell(c).getStringCellValue(); 
+	            	  break;
+	            	  
+	            	  case 6: screenshot = row.getCell(c).getBooleanCellValue();
+	            	  break;
+	            	  
+	            	  case 7: waitTime = row.getCell(c).getNumericCellValue();
 	            	  break;
 	            	  
 	            	  
@@ -80,9 +82,10 @@ public class LeerXmls {
 	            	  
 	            	  
 	              }
-	             aux = new Step(Step, Accion, vAccion, locator, vLocator,screenshot,waitTime);
+	             aux = new Step(Step,description, action, vAccion, locator, vLocator,screenshot,waitTime);
 	             TC.add(aux);
-	             Accion="";
+	             action="";
+	             description="";
 	            vAccion="";
 	            locator="";
 	            vLocator="";
