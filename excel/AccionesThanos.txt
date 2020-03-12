@@ -1,0 +1,12 @@
+navigate
+quit
+type
+click
+clear
+enter
+selectByValue
+selectByIndex
+Wait
+implicitlyWait
+alert
+confirm

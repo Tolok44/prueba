@@ -3,15 +3,18 @@ package Utilities;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import org.junit.Assert;
+
 public class DriverManager {
 	public WebDriver driver;
 	public WebElement element;
@@ -55,7 +58,6 @@ public class DriverManager {
 
 	}
 
-
 	public File screenshot(WebDriver driver) {
 		TakesScreenshot scrShot = ((TakesScreenshot) driver);
 		return scrShot.getScreenshotAs(OutputType.FILE);
@@ -63,7 +65,9 @@ public class DriverManager {
 
 	public void executeStep(Step Obj) throws InterruptedException {
 		WebElement auxElement = elementCreator(Obj);
-		int wait=(int) Obj.getWaitTime();
+		int wait = (int) Obj.getWaitTime();
+		Actions action = new Actions(driver);
+		boolean confirm=false;
 		switch (Obj.getAccion().toLowerCase()) {
 		case "navigate":
 			driver.navigate().to(Obj.getValueAccion());
@@ -72,7 +76,6 @@ public class DriverManager {
 		case "quit":
 			driver.quit();
 			break;
-
 		case "type":
 			auxElement.sendKeys(Obj.getValueAccion());
 			break;
@@ -94,24 +97,23 @@ public class DriverManager {
 			select.selectByIndex(Integer.parseInt(Obj.getValueAccion()));
 			break;
 		case "Wait":
-			driver.manage().timeouts().wait(wait*1000);
+			driver.manage().timeouts().wait(wait * 1000);
 			break;
 		case "implicitlyWait":
-			driver.manage().timeouts().implicitlyWait(wait,TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(wait, TimeUnit.SECONDS);
 			break;
-		case "compare":
-			try {
-				Assert.assertEquals(Obj.getValueAccion(),element.getText());
-				System.out.println("The value "+Obj.getValueAccion()+" equals to "+element.getText());
-			}catch(Error e) {
-				System.out.println("The value "+Obj.getValueAccion()+" does not equals to "+element.getText());
+		case "alert":
+			driver.switchTo().alert().accept();
+			break;
+		case "confirm":
+			confirm=element.isDisplayed();
+			if(confirm==true) {
+				System.out.println("The element exists");
+			}else {
+				System.out.println("The element does not exists");
+
 			}
 			break;
-			
-		case "closeAlert":
-			driver.switchTo().alert().dismiss();
-			break;
-			
 		}
 
 	}

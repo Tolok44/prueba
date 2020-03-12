@@ -23,7 +23,7 @@ public class TC2 {
 		 driverManager.setDriver(driver);
 		//Manda el driver a elemento
 		LeerXmls TC = new LeerXmls();		
-		ListaObjetosStep=TC.obtenObjetos("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\excel\\TC1.xlsx");
+		ListaObjetosStep=TC.obtenObjetos("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\excel\\TC4.xlsx");
 		//lee cada uno de los steps
 		for(int x=1;x<ListaObjetosStep.size();x++) {
 			System.out.println(ListaObjetosStep.get(x).toString());
