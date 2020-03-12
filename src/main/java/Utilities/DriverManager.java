@@ -1,6 +1,7 @@
 package Utilities;
 
 import java.io.File;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
@@ -11,8 +12,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.junit.Assert;
 
 public class DriverManager {
@@ -68,6 +70,9 @@ public class DriverManager {
 		int wait = (int) Obj.getWaitTime();
 		Actions action = new Actions(driver);
 		boolean confirm=false;
+		Random random = new Random();
+		int rand=0;
+				
 		switch (Obj.getAccion().toLowerCase()) {
 		case "navigate":
 			driver.navigate().to(Obj.getValueAccion());
@@ -97,7 +102,7 @@ public class DriverManager {
 			select.selectByIndex(Integer.parseInt(Obj.getValueAccion()));
 			break;
 		case "Wait":
-			driver.manage().timeouts().wait(wait * 1000);
+			Thread.sleep(wait*10000);	
 			break;
 		case "implicitlyWait":
 			driver.manage().timeouts().implicitlyWait(wait, TimeUnit.SECONDS);
@@ -113,6 +118,15 @@ public class DriverManager {
 				System.out.println("The element does not exists");
 
 			}
+			break;
+		case "randuser":
+		    rand=random.nextInt(10000);
+		    System.out.println(rand);
+			auxElement.sendKeys("Marselo"+rand);
+			break;
+		case "randemail":
+			rand=random.nextInt(10000);
+			auxElement.sendKeys("Marselo"+rand+"@gmail.com");
 			break;
 		}
 
