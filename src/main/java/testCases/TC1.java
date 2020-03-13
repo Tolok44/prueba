@@ -1,14 +1,15 @@
 package testCases;
-import java.io.IOException;
+
+
 import java.util.ArrayList;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import Utilities.LeerXmls;
+import Utilities.DriverManager;
 import Utilities.LeerXmls1;
 import Utilities.Step;
-import Utilities.DriverManager;
+import Utilities.reportMethod;
 
 public class TC1 {
 
@@ -29,7 +30,7 @@ public class TC1 {
 		tcList=TC.obtenObjetos("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\excel\\TC.xlsx");
 		//lee cada uno de los steps
 		for(int x=0;x<tcList.size();x++) {
-			//recive la lista de pasos del test case
+			//Receive la lista de pasos del test case
 			stepList=tcList.get(x);
 			//itera cada paso para mandarlos al driver manager
 			for(int i=1;i<stepList.size();i++) {
@@ -39,6 +40,8 @@ public class TC1 {
 			//se crea un Web element y se ejecutan
 			driverManager.executeStep(stepList.get(i));
 			}
+			reportMethod report= new reportMethod();
+			report.reportMaker(tcList.get(x));
 		}
 	}
 

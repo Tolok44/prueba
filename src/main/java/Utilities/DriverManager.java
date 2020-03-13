@@ -73,7 +73,7 @@ public class DriverManager {
 
 	            //Move image file to new destination
 
-	                File DestFile=new File("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+"Step "+Obj.getStep()+" "+Obj.getAccion()+".png");
+	                File DestFile=new File("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+Obj.getTcName()+"\\Step "+Obj.getStep()+" "+Obj.getAccion()+".png");
 	                FileUtils.copyFile(SrcFile, DestFile);
 
 	    }

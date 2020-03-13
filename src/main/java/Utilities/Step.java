@@ -2,7 +2,7 @@ package Utilities;
 
 
 public class Step {
-	
+	public String tcName;
 	public double step;
 	public String description;
 	public String accion;
@@ -13,7 +13,8 @@ public class Step {
 	public double waitTime;
 	
 
-	public Step(double step, String description,String accion,String vAccion, String locator, String vLocator,boolean screenshot,double waitTime) {
+	public Step(String tcName,double step, String description,String accion,String vAccion, String locator, String vLocator,boolean screenshot,double waitTime) {
+		this.tcName=tcName;
 		this.step=step;
 		this.description=description;
 		this.accion=accion;
@@ -23,13 +24,18 @@ public class Step {
 		this.screenshot=screenshot;
 		this.waitTime=waitTime;
 		
+		
 	}
+
+
 
 	@Override
 	public String toString() {
-		return "Step [step=" + step + "description= "+description+", accion=" + accion + ", vAccion=" + valueAccion + ", locator=" + locator
-				+ ", vLocator=" + valueLocator + ", screenshot= "+ screenshot+", Wait Time= "+ waitTime+ "]";
+		return "Step [tcName=" + tcName + ", step=" + step + ", description=" + description + ", accion=" + accion
+				+ ", valueAccion=" + valueAccion + ", locator=" + locator + ", valueLocator=" + valueLocator
+				+ ", screenshot=" + screenshot + ", waitTime=" + waitTime + "]";
 	}
+
 
 
 	public double getStep() {
@@ -95,6 +101,14 @@ public class Step {
 
 	public void setWaitTime(double waitTime) {
 		this.waitTime = waitTime;
+	}
+
+	public String getTcName() {
+		return tcName;
+	}
+
+	public void setTcName(String tcName) {
+		this.tcName = tcName;
 	}
 	
 	

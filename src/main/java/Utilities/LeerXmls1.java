@@ -26,9 +26,9 @@ public class LeerXmls1 {
 
 		// Obtengo el número de columnas ocupadas en la hoja
 		int cols = 0;
-
+		
 		// Cadena que usamos para almacenar la lectura de la celda
-		String action = "", description = "", vAccion = "", locator = "", vLocator = "";
+		String tcName="",action = "", description = "", vAccion = "", locator = "", vLocator = "";
 		double Step = 0;
 		double waitTime = 0;
 		boolean screenshot = false;
@@ -39,6 +39,10 @@ public class LeerXmls1 {
 		System.out.println(workbook.getNumberOfSheets());
 		while( x <= (workbook.getNumberOfSheets()-1)) {
 			spreadsheet = workbook.getSheetAt(x);
+			File directory = new File("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+workbook.getSheetName(x));
+			
+			
+			System.out.println(workbook.getSheetName(x));
 			rows = spreadsheet.getLastRowNum()+1;
 			for (int r = 0; r < rows; r++) {
 				
@@ -46,8 +50,9 @@ public class LeerXmls1 {
 
 				for (int c = 0; c < (row.getLastCellNum()); c++) {
 					if (row.getCell(c) == null) {
-
+						
 					} else {
+						tcName=workbook.getSheetName(x);
 						if (r > 0) {
 							switch (c) {
 
@@ -89,13 +94,15 @@ public class LeerXmls1 {
 					}
 
 				}
-				aux = new Step(Step, description, action, vAccion, locator, vLocator, screenshot, waitTime);
+				aux = new Step(tcName,Step, description, action, vAccion, locator, vLocator, screenshot, waitTime);
 				TC.add(aux);
+				tcName="";
 				action = "";
 				description = "";
 				vAccion = "";
 				locator = "";
 				vLocator = "";
+				
 				
 			}
 
