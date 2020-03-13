@@ -12,7 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class LeerXmls1 {
 	static ArrayList<Step> TC = new ArrayList();
 	static ArrayList<ArrayList> listTC = new ArrayList();;
-	static XSSFRow row;
+	public XSSFRow row;
 
 	public ArrayList<ArrayList> obtenObjetos(String name) throws IOException {
 
@@ -37,14 +37,14 @@ public class LeerXmls1 {
 		int rows=0;
 		int x = 0;
 		System.out.println(workbook.getNumberOfSheets());
-		while( x <= workbook.getNumberOfSheets()) {
-			spreadsheet = workbook.getSheetAt(0);
-			rows = spreadsheet.getLastRowNum() + 1;
+		while( x <= (workbook.getNumberOfSheets()-1)) {
+			spreadsheet = workbook.getSheetAt(x);
+			rows = spreadsheet.getLastRowNum()+1;
 			for (int r = 0; r < rows; r++) {
 				
 				row = spreadsheet.getRow(r);
 
-				for (int c = 0; c < (cols = row.getLastCellNum()); c++) {
+				for (int c = 0; c < (row.getLastCellNum()); c++) {
 					if (row.getCell(c) == null) {
 
 					} else {
@@ -96,12 +96,13 @@ public class LeerXmls1 {
 				vAccion = "";
 				locator = "";
 				vLocator = "";
-
+				
 			}
 
-			listTC.add(TC);
+			
 			x++;
 		}
+		listTC.add(TC);
 		fis.close();
 		return listTC;
 		

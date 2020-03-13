@@ -11,7 +11,7 @@ import Utilities.LeerXmls;
 import Utilities.Step;
 
 public class TC2 {
-	public static void main(String[] args) throws IOException, InterruptedException {
+	public static void main(String[] args) throws Exception {
 		//Crea objeto tipo WebElementCreator
 		DriverManager driverManager=new DriverManager();
 		//Crea una lista para gardar los pasos

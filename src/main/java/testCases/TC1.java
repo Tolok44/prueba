@@ -12,7 +12,7 @@ import Utilities.DriverManager;
 
 public class TC1 {
 
-	public static void main(String[] args) throws IOException, InterruptedException {
+	public static void main(String[] args) throws Exception {
 		//Crea objeto tipo WebElementCreator
 		DriverManager driverManager=new DriverManager();
 		//Crea una lista para guardar los pasos
@@ -29,15 +29,15 @@ public class TC1 {
 		tcList=TC.obtenObjetos("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\excel\\TC.xlsx");
 		//lee cada uno de los steps
 		for(int x=0;x<tcList.size();x++) {
-			//resive la lista de pasos del test case
+			//recive la lista de pasos del test case
 			stepList=tcList.get(x);
 			//itera cada paso para mandarlos al driver manager
 			for(int i=1;i<stepList.size();i++) {
 				//imprime el paso 
-			System.out.println(stepList.get(x).toString());
+			System.out.println(stepList.get(i).toString());
 			Thread.sleep(1000);
 			//se crea un Web element y se ejecutan
-			driverManager.executeStep(stepList.get(x));
+			driverManager.executeStep(stepList.get(i));
 			}
 		}
 	}

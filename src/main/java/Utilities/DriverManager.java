@@ -16,9 +16,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.junit.Assert;
+import org.apache.commons.io.FileUtils;
 
 public class DriverManager {
-	public WebDriver driver;
+	public static WebDriver driver;
 	public WebElement element;
 	public Select select;
 
@@ -60,19 +61,34 @@ public class DriverManager {
 
 	}
 
-	public File screenshot(WebDriver driver) {
-		TakesScreenshot scrShot = ((TakesScreenshot) driver);
-		return scrShot.getScreenshotAs(OutputType.FILE);
-	}
+	 public static void takeSnapShot(Step Obj) throws Exception{
 
-	public void executeStep(Step Obj) throws InterruptedException {
+	        //Convert web driver object to TakeScreenshot
+
+	        TakesScreenshot scrShot =((TakesScreenshot)driver);
+
+	        //Call getScreenshotAs method to create image file
+
+	                File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+
+	            //Move image file to new destination
+
+	                File DestFile=new File("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+"Step "+Obj.getStep()+" "+Obj.getAccion()+".png");
+	                FileUtils.copyFile(SrcFile, DestFile);
+
+	    }
+
+	public void executeStep(Step Obj) throws Exception {
 		WebElement auxElement = elementCreator(Obj);
 		int wait = (int) Obj.getWaitTime();
 		Actions action = new Actions(driver);
 		boolean confirm=false;
 		Random random = new Random();
 		int rand=0;
-				
+				if(Obj.getScreenshoot()==true) {
+					takeSnapShot(Obj);
+					System.out.print("Screenshot taken");
+				}
 		switch (Obj.getAccion().toLowerCase()) {
 		case "navigate":
 			driver.navigate().to(Obj.getValueAccion());
