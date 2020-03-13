@@ -100,6 +100,11 @@ public class DriverManager {
 		case "type":
 			auxElement.sendKeys(Obj.getValueAccion());
 			break;
+		case "typenumeric":
+			String numeric=Obj.waitTime+"";
+			String ignoredotcero=numeric.replace(".0","");
+			auxElement.sendKeys(ignoredotcero);
+			break;
 		case "click":
 			auxElement.click();
 			break;

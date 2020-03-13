@@ -1,6 +1,7 @@
 navigate
 quit
 type
+typenumeric
 click
 clear
 enter
