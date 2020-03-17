@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import Utilities.DriverManager;
 import Utilities.LeerXmls1;
+import Utilities.OpenHtml;
 import Utilities.Step;
 import Utilities.reportMethod;
 
@@ -20,12 +21,13 @@ public class TC1 {
 		ArrayList<ArrayList> tcList;
 		ArrayList<Step> stepList;
 		//Inicializa el WebDriver
-		
 		WebDriver driver;
 		System.setProperty("webdriver.chrome.driver","C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\driver\\chromedriver.exe" );
 		 driver = new ChromeDriver();
 		 driverManager.setDriver(driver);
-		//Manda el driver a elemento
+		 //Crea un Objeto OpneHtml
+		 OpenHtml openHtml=new OpenHtml();
+		//Manda el driver a element
 		LeerXmls1 TC = new LeerXmls1();		
 		tcList=TC.obtenObjetos("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\excel\\TC.xlsx");
 		//lee cada uno de los steps
@@ -43,6 +45,9 @@ public class TC1 {
 			reportMethod report= new reportMethod();
 			report.reportMaker(tcList.get(x));
 		}
+		//abre el reporte
+		openHtml.OpenHtml();
 	}
+
 
 }

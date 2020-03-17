@@ -22,16 +22,15 @@ public class LeerXmls1 {
 
 		XSSFSheet spreadsheet;
 
-		
-
 		// Obtengo el número de columnas ocupadas en la hoja
 		int cols = 0;
 		
 		// Cadena que usamos para almacenar la lectura de la celda
-		String tcName="",action = "", description = "", vAccion = "", locator = "", vLocator = "";
+		String tcName="",action = "", description = "", vAccion = "", locator = "", vLocator = "",time="";
 		double Step = 0;
 		double waitTime = 0;
 		boolean screenshot = false;
+		boolean pass=false;
 
 		Step aux;
 		int rows=0;
@@ -87,26 +86,19 @@ public class LeerXmls1 {
 							case 7:
 								waitTime = row.getCell(c).getNumericCellValue();
 								break;
-
 							}
 						}
-
 					}
-
 				}
-				aux = new Step(tcName,Step, description, action, vAccion, locator, vLocator, screenshot, waitTime);
+				aux = new Step(tcName,Step, description, action, vAccion, locator, vLocator, screenshot, waitTime,pass,time);
 				TC.add(aux);
 				tcName="";
 				action = "";
 				description = "";
 				vAccion = "";
 				locator = "";
-				vLocator = "";
-				
-				
-			}
-
-			
+				vLocator = "";	
+			}			
 			x++;
 		}
 		listTC.add(TC);

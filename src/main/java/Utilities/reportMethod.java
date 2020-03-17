@@ -15,10 +15,6 @@ public class reportMethod {
 		try{
 		     filewriter = new FileWriter("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\src\\main\\java\\reports\\reporte.html");//declarar el archivo
 		     printw = new PrintWriter(filewriter);//declarar un impresor
-		     LocalDateTime myObj = LocalDateTime.now();
-		     DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-		     String formattedDate = myObj.format(myFormatObj);
-		     
 		     printw.println("<html>");
 		     printw.println("<head><title>Reporte</title> "
 		     		+"<link rel=\"icon\" href=\"../img/Thanos.png\" />" + 
@@ -43,6 +39,7 @@ public class reportMethod {
 		     		"    <table class=\"table table-hover\">" + 
 		     		"        <thead>" + 
 		     		"          <tr>" + 
+		     		"            <th scope=\"col\">Test Case Name</th>" + 
 		     		"            <th scope=\"col\">No. Step</th>" + 
 		     		"            <th scope=\"col\">Description</th>" + 
 		     		"            <th>Action</th>" + 
@@ -56,13 +53,14 @@ public class reportMethod {
 		     for(int i = 0; i < stepList.size(); i++)
 		     {
 		    	 printw.println("<tbody>" + "<tr>");
-		    	 printw.println("<th scope=\"row\">" + stepList.get(i).step + "</th>"+ 
+		    	 printw.println("<th scope=\"row\">" + stepList.get(i).tcName + "</th>"+ 
+		    			 "<th scope=\"row\">" + stepList.get(i).step + "</th>"+ 
 		    	 		"<td>" + stepList.get(i).description + "</td>"+ 
 		    	 		"<td>" + stepList.get(i).accion + "</td>" + 
 		    	 		"<td>" + stepList.get(i).valueAccion + "</td>"+ 
 		    	 		"<td><span><img src=\"../img/pass-icon.png\" height=\"30\" width=\"30\"></span></td>"+ 
 		    	 		"<td><a href=\"C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+stepList.get(i).getTcName()+"\\Step "+ stepList.get(i).step+" "+stepList.get(i).accion +".png\"> Screenshot</a></td>"+
-		    	 		"<td> " + formattedDate + "</td>"+ 
+		    	 		"<td> " + stepList.get(i).getTime() + "</td>"+ 
 		    	 		"</tr> </div>");
 		     }
 		     printw.println("</body>");

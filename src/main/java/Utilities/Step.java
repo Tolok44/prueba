@@ -11,9 +11,11 @@ public class Step {
 	public String valueLocator;
 	public boolean screenshot;
 	public double waitTime;
+	public boolean pass;
+	public String time;
 	
 
-	public Step(String tcName,double step, String description,String accion,String vAccion, String locator, String vLocator,boolean screenshot,double waitTime) {
+	public Step(String tcName,double step, String description,String accion,String vAccion, String locator, String vLocator,boolean screenshot,double waitTime,boolean pass,String time) {
 		this.tcName=tcName;
 		this.step=step;
 		this.description=description;
@@ -23,20 +25,18 @@ public class Step {
 		this.valueLocator=vLocator;
 		this.screenshot=screenshot;
 		this.waitTime=waitTime;
+		this.pass=pass;
+		this.time=time;
 		
 		
 	}
-
-
 
 	@Override
 	public String toString() {
 		return "Step [tcName=" + tcName + ", step=" + step + ", description=" + description + ", accion=" + accion
 				+ ", valueAccion=" + valueAccion + ", locator=" + locator + ", valueLocator=" + valueLocator
-				+ ", screenshot=" + screenshot + ", waitTime=" + waitTime + "]";
+				+ ", screenshot=" + screenshot + ", waitTime=" + waitTime + ", pass=" + pass + ", time=" + time + "]";
 	}
-
-
 
 	public double getStep() {
 		return step;
@@ -109,6 +109,14 @@ public class Step {
 
 	public void setTcName(String tcName) {
 		this.tcName = tcName;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 	
 	
