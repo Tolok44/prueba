@@ -37,6 +37,8 @@ public class DriverManager {
 	public void setDriver(WebDriver driver) {
 		this.driver = driver;
 	}
+	
+	
 
 	public WebElement elementCreator(Step Obj) {
 		switch (Obj.getLocator().toLowerCase()) {
@@ -63,6 +65,31 @@ public class DriverManager {
 		return element;
 
 	}
+	public WebElement elementCreatorDrag(Step Obj) {
+		switch (Obj.getDestinationLocator().toLowerCase()) {
+		case "name":
+			element = driver.findElement(By.name(Obj.getDestinationLocatorValue()));
+			break;
+		case "classname":
+			element = driver.findElement(By.className(Obj.getDestinationLocatorValue()));
+			break;
+		case "cssselector":
+			element = driver.findElement(By.cssSelector(Obj.getDestinationLocatorValue()));
+			break;
+		case "id":
+			element = driver.findElement(By.id(Obj.getDestinationLocatorValue()));
+			break;
+		case "xpath":
+			element = driver.findElement(By.xpath(Obj.getDestinationLocatorValue()));
+			break;
+		case "tagName":
+			element = driver.findElement(By.tagName(Obj.getDestinationLocatorValue()));
+			break;
+		}
+
+		return element;
+
+	}
 
 	 public static void takeSnapShot(Step Obj) throws Exception{
 		 if(Obj.getScreenshoot()==true) {
@@ -80,8 +107,6 @@ public class DriverManager {
 		                FileUtils.copyFile(SrcFile, DestFile);
 				System.out.print("Screenshot taken");
 			}
-	       
-
 	    }
 
 	public void executeStep(Step Obj) throws Exception {
@@ -101,7 +126,6 @@ public class DriverManager {
 			takeSnapShot(Obj);
 			driver.navigate().to(Obj.getValueAccion());
 			break;
-
 		case "quit":
 			takeSnapShot(Obj);
 			driver.quit();
@@ -152,7 +176,7 @@ public class DriverManager {
 			break;
 		case "confirm":
 			takeSnapShot(Obj);
-			confirm=element.isDisplayed();
+			confirm=auxElement.isDisplayed();
 			if(confirm==true) {
 				System.out.println("The element exists");
 			}else {
@@ -163,7 +187,7 @@ public class DriverManager {
 		case "compto":
 			takeSnapShot(Obj);
 			System.out.println("comparing...");
-			if(Obj.valueAccion.equals(element.getText())) {
+			if(Obj.valueAccion.equals(auxElement.getText())) {
 				confirm=true;
 			}else {
 				confirm=false;
@@ -186,6 +210,14 @@ public class DriverManager {
 			auxElement.sendKeys("Rafita"+rand+"@gmail.com");
 			break;
 			
+		case "dragndrop":
+			WebElement to=elementCreatorDrag(Obj);
+			action.dragAndDrop(auxElement, to).build().perform();
+		break;
+			
 		}
 	}
-}
+
+		
+	}
+

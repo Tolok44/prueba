@@ -11,5 +11,7 @@ Wait
 implicitlyWait
 alert
 confirm
+compto
+dragndrop
 randuser
 randemail

@@ -13,9 +13,11 @@ public class Step {
 	public double waitTime;
 	public boolean pass;
 	public String time;
+	public String destinationLocator;
+	public String destinationLocatorValue;
 	
 
-	public Step(String tcName,double step, String description,String accion,String vAccion, String locator, String vLocator,boolean screenshot,double waitTime,boolean pass,String time) {
+	public Step(String tcName,double step, String description,String accion,String vAccion, String locator, String vLocator,boolean screenshot,double waitTime,boolean pass,String time,String destinationLocator,String destinationLocatorValue) {
 		this.tcName=tcName;
 		this.step=step;
 		this.description=description;
@@ -27,16 +29,29 @@ public class Step {
 		this.waitTime=waitTime;
 		this.pass=pass;
 		this.time=time;
-		
+		this.destinationLocator=destinationLocator;
+		this.destinationLocatorValue=destinationLocatorValue;
 		
 	}
+
+	
+
+
+
 
 	@Override
 	public String toString() {
 		return "Step [tcName=" + tcName + ", step=" + step + ", description=" + description + ", accion=" + accion
 				+ ", valueAccion=" + valueAccion + ", locator=" + locator + ", valueLocator=" + valueLocator
-				+ ", screenshot=" + screenshot + ", waitTime=" + waitTime + ", pass=" + pass + ", time=" + time + "]";
+				+ ", screenshot=" + screenshot + ", waitTime=" + waitTime + ", pass=" + pass + ", time=" + time
+				+ ", destinationLocator=" + destinationLocator + ", destinationLocatorValue=" + destinationLocatorValue
+				+ "]";
 	}
+
+
+
+
+
 
 	public double getStep() {
 		return step;
@@ -71,18 +86,12 @@ public class Step {
 	public String getLocator() {
 		return locator;
 	}
-
-
 	public void setLocator(String locator) {
 		this.locator = locator;
 	}
-
-
 	public String getValueLocator() {
 		return valueLocator;
 	}
-
-
 	public void setvLocator(String vLocator) {
 		this.valueLocator = vLocator;
 	}
@@ -126,8 +135,18 @@ public class Step {
 	public void setPass(boolean pass) {
 		this.pass = pass;
 	}
-	
-	
-	
-	
+
+	public String getDestinationLocator() {
+		return destinationLocator;
+	}
+
+	public void setDestinationLocator(String destinationLocator) {
+		this.destinationLocator = destinationLocator;
+	}
+	public String getDestinationLocatorValue() {
+		return destinationLocatorValue;
+	}
+	public void setDestinationLocatorValue(String destinationLocatorValue) {
+		this.destinationLocatorValue = destinationLocatorValue;
+	}
 }

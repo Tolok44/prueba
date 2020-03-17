@@ -28,6 +28,7 @@ public class TC1 {
 		 //Crea un Objeto OpneHtml
 		 OpenHtml openHtml=new OpenHtml();
 		//Manda el driver a element
+		 reportMethod report= new reportMethod();
 		LeerXmls1 TC = new LeerXmls1();		
 		tcList=TC.obtenObjetos("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\excel\\TC.xlsx");
 		//lee cada uno de los steps
@@ -38,11 +39,15 @@ public class TC1 {
 			for(int i=1;i<stepList.size();i++) {
 				//imprime el paso 
 			System.out.println(stepList.get(i).toString());
-			Thread.sleep(1000);
 			//se crea un Web element y se ejecutan
+			try {
 			driverManager.executeStep(stepList.get(i));
+			}catch(Exception e) {
+			      System.out.println(" ups something went wrong.");
+			      stepList.get(i).setPass(false);
 			}
-			reportMethod report= new reportMethod();
+			}
+			
 			report.reportMaker(tcList.get(x));
 		}
 		//abre el reporte

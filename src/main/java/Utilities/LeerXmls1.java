@@ -26,7 +26,7 @@ public class LeerXmls1 {
 		int cols = 0;
 		
 		// Cadena que usamos para almacenar la lectura de la celda
-		String tcName="",action = "", description = "", vAccion = "", locator = "", vLocator = "",time="";
+		String tcName="",action = "", description = "", vAccion = "", locator = "", vLocator = "",time="",destination="",destinationLocator="";
 		double Step = 0;
 		double waitTime = 0;
 		boolean screenshot = false;
@@ -78,19 +78,27 @@ public class LeerXmls1 {
 							case 5:
 								vLocator = row.getCell(c).getStringCellValue();
 								break;
-
 							case 6:
-								screenshot = row.getCell(c).getBooleanCellValue();
+								destination = row.getCell(c).getStringCellValue();
 								break;
 
 							case 7:
+								destinationLocator = row.getCell(c).getStringCellValue();
+								break;
+
+
+							case 8:
+								screenshot = row.getCell(c).getBooleanCellValue();
+								break;
+
+							case 9:
 								waitTime = row.getCell(c).getNumericCellValue();
 								break;
 							}
 						}
 					}
 				}
-				aux = new Step(tcName,Step, description, action, vAccion, locator, vLocator, screenshot, waitTime,pass,time);
+				aux = new Step(tcName,Step, description, action, vAccion, locator, vLocator, screenshot, waitTime,pass,time,destination,destinationLocator);
 				TC.add(aux);
 				tcName="";
 				action = "";
