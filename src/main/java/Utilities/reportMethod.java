@@ -57,9 +57,14 @@ public class reportMethod {
 		    			 "<th scope=\"row\">" + stepList.get(i).step + "</th>"+ 
 		    	 		"<td>" + stepList.get(i).description + "</td>"+ 
 		    	 		"<td>" + stepList.get(i).accion + "</td>" + 
-		    	 		"<td>" + stepList.get(i).valueAccion + "</td>"+ 
-		    	 		"<td><span><img src=\"../img/pass-icon.png\" height=\"30\" width=\"30\"></span></td>"+ 
-		    	 		"<td><a href=\"C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+stepList.get(i).getTcName()+"\\Step "+ stepList.get(i).step+" "+stepList.get(i).accion +".png\"> Screenshot</a></td>"+
+		    	 		"<td>" + stepList.get(i).valueAccion + "</td>");
+		    	 if(stepList.get(i).isPass() == true) {
+		    		 printw.println("<td><span><img src=\"../img/pass-icon.png\" height=\"30\" width=\"30\"></span></td>");
+		    	 }else {
+		    		 printw.println("<td><span><img src=\"../img/failed-icon.png\" height=\"30\" width=\"30\"></span></td>");
+		    	 }
+		    	 		
+		    	 		printw.println("<td><a href=\"C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+stepList.get(i).getTcName()+"\\Step "+ stepList.get(i).step+" "+stepList.get(i).accion +".png\"> Screenshot</a></td>"+
 		    	 		"<td> " + stepList.get(i).getTime() + "</td>"+ 
 		    	 		"</tr> </div>");
 		     }

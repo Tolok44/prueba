@@ -118,6 +118,14 @@ public class Step {
 	public void setTime(String time) {
 		this.time = time;
 	}
+
+	public boolean isPass() {
+		return pass;
+	}
+
+	public void setPass(boolean pass) {
+		this.pass = pass;
+	}
 	
 	
 	

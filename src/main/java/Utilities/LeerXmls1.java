@@ -30,7 +30,7 @@ public class LeerXmls1 {
 		double Step = 0;
 		double waitTime = 0;
 		boolean screenshot = false;
-		boolean pass=false;
+		boolean pass=true;
 
 		Step aux;
 		int rows=0;
