@@ -22,36 +22,38 @@ public class LeerXmls1 {
 
 		XSSFSheet spreadsheet;
 
-		// Obtengo el número de columnas ocupadas en la hoja
+		// number of columns in the sheets
 		int cols = 0;
-		
-		// Cadena que usamos para almacenar la lectura de la celda
-		String tcName="",action = "", description = "", vAccion = "", locator = "", vLocator = "",time="",destination="",destinationLocator="";
+
+		// String used to save the lecture of the excel file
+		String tcName = "", action = "", description = "", vAccion = "", locator = "", vLocator = "", time = "",
+				destination = "", destinationLocator = "";
 		double Step = 0;
 		double waitTime = 0;
 		boolean screenshot = false;
-		boolean pass=true;
-
+		boolean pass = true;
 		Step aux;
-		int rows=0;
+		int rows = 0;
 		int x = 0;
+		// prints number of sheets
 		System.out.println(workbook.getNumberOfSheets());
-		while( x <= (workbook.getNumberOfSheets()-1)) {
+		//a cycle to iterate all the sheets in the file 
+		while (x <= (workbook.getNumberOfSheets() - 1)) {
 			spreadsheet = workbook.getSheetAt(x);
-			File directory = new File("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+workbook.getSheetName(x));
-			
-			
+			File directory = new File("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\" + workbook.getSheetName(x));
+			//prints  the name of the actual sheet
 			System.out.println(workbook.getSheetName(x));
-			rows = spreadsheet.getLastRowNum()+1;
+			rows = spreadsheet.getLastRowNum() + 1;
 			for (int r = 0; r < rows; r++) {
-				
+
 				row = spreadsheet.getRow(r);
 
 				for (int c = 0; c < (row.getLastCellNum()); c++) {
 					if (row.getCell(c) == null) {
-						
+
 					} else {
-						tcName=workbook.getSheetName(x);
+						//saves all the step variables from the sheet 
+						tcName = workbook.getSheetName(x);
 						if (r > 0) {
 							switch (c) {
 
@@ -86,7 +88,6 @@ public class LeerXmls1 {
 								destinationLocator = row.getCell(c).getStringCellValue();
 								break;
 
-
 							case 8:
 								screenshot = row.getCell(c).getBooleanCellValue();
 								break;
@@ -98,21 +99,21 @@ public class LeerXmls1 {
 						}
 					}
 				}
-				aux = new Step(tcName,Step, description, action, vAccion, locator, vLocator, screenshot, waitTime,pass,time,destination,destinationLocator);
+				aux = new Step(tcName, Step, description, action, vAccion, locator, vLocator, screenshot, waitTime,
+						pass, time, destination, destinationLocator);
 				TC.add(aux);
-				tcName="";
+				tcName = "";
 				action = "";
 				description = "";
 				vAccion = "";
 				locator = "";
-				vLocator = "";	
-			}			
+				vLocator = "";
+			}
 			x++;
 		}
 		listTC.add(TC);
 		fis.close();
 		return listTC;
-		
-		
+
 	}
 }

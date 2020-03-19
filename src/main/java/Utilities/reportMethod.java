@@ -3,18 +3,21 @@ package Utilities;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class reportMethod {
+	//Initialize FileWrite and PrintWriter to write HTML
 	FileWriter filewriter = null;
 	 PrintWriter printw = null;
-	 
+	 //We create a method to create a report
 	public void reportMaker(ArrayList<Step> stepList) {
+		//A printer is created
 		try{
-		     filewriter = new FileWriter("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\src\\main\\java\\reports\\reporte.html");//declarar el archivo
-		     printw = new PrintWriter(filewriter);//declarar un impresor
+			//declare the file location
+		     filewriter = new FileWriter("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\src\\main\\java\\reports\\reporte.html");
+		     //Create a print object to write the html code
+		     printw = new PrintWriter(filewriter);
+		     //Initialize the html doc 
 		     printw.println("<html>");
 		     printw.println("<head><title>Reporte</title> "
 		     		+"<link rel=\"icon\" href=\"../img/Thanos.png\" />" + 
@@ -23,10 +26,9 @@ public class reportMethod {
 		     		"<script src=\"../js/jquery-3.4.1.min.js\"></script>" + 
 		     		"<script src=\"../js/bootstrap.min.js\"></script>"
 		     		+ "</head>");    
-		     //
 		     printw.println("<body>");
 		    
-		     //Creacion de navbar
+		     //navigation bar creation
 		     printw.println("<nav class=\"navbar-custom\">" + 
 		     		"    <a class=\"navbar-brand\" href=\"#\">" + 
 		     		"      <img src=\"../img/iconfinder_JD-27_2624867.png\" width=\"40\" height=\"40\" class=\"d-inline-block align-top\">" + 
@@ -34,7 +36,7 @@ public class reportMethod {
 		     		"    </a>" + 
 		     		"  </nav>");
 	
-			//Creacion de la tabla con sus headers y contenido
+		     //A table and their headers are created.
 		     printw.println(" <div>" + 
 		     		"    <table class=\"table table-hover\">" + 
 		     		"        <thead>" + 
@@ -50,6 +52,7 @@ public class reportMethod {
 		     		"          </tr>" + 
 		     		"        </thead>"
 		     		);
+		     //All the steps from their respective test cases are printed by a for cycle
 		     for(int i = 0; i < stepList.size(); i++)
 		     {
 		    	 printw.println("<tbody>" + "<tr>");
@@ -58,23 +61,23 @@ public class reportMethod {
 		    	 		"<td>" + stepList.get(i).description + "</td>"+ 
 		    	 		"<td>" + stepList.get(i).accion + "</td>" + 
 		    	 		"<td>" + stepList.get(i).valueAccion + "</td>");
+		    	 //here verifies if an step passed or not 
 		    	 if(stepList.get(i).isPass() == true) {
 		    		 printw.println("<td><span><img src=\"../img/pass-icon.png\" height=\"30\" width=\"30\"></span></td>");
 		    	 }else {
 		    		 printw.println("<td><span><img src=\"../img/failed-icon.png\" height=\"30\" width=\"30\"></span></td>");
 		    	 }
 		    	 		
-		    	 		printw.println("<td><a href=\"C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+stepList.get(i).getTcName()+"\\Step "+ stepList.get(i).step+" "+stepList.get(i).accion +".png\"> Screenshot</a></td>"+
-		    	 		"<td> " + stepList.get(i).getTime() + "</td>"+ 
-		    	 		"</tr> </div>");
+		    	 	printw.println("<td><a href=\"C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+stepList.get(i).getTcName()+"\\Step "+ stepList.get(i).step+" "+stepList.get(i).accion +".png\"> Screenshot</a></td>"+
+		    	 	"<td> " + stepList.get(i).getTime() + "</td>"+ 
+		    	 	"</tr> </div>");
 		     }
+		     //we close the html code.
 		     printw.println("</body>");
 		     printw.println("</html>");
-		           
-		     //no debemos olvidar cerrar el archivo para que su lectura sea correcta
-		     printw.close();//cerramos el archivo
-		     System.out.println("Reporte generado exitosamente");//si todo sale bien mostramos un mensaje de guardado exitoso
-	}catch(IOException e){
+		     printw.close();//we close the print object.
+		     System.out.println("Reporte generado exitosamente");//If everything success will send a console message.
+	}catch(IOException e){ //If it fails will send a message with the exception.
 		e.getMessage();
 	}
 	}

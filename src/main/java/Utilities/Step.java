@@ -1,6 +1,6 @@
 package Utilities;
 
-
+//In this class there are all the characteristics of an step
 public class Step {
 	public String tcName;
 	public double step;

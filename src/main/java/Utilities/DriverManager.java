@@ -5,8 +5,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
@@ -14,12 +12,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.junit.Assert;
 import org.apache.commons.io.FileUtils;
-
+/** This class manages the driver, has all the actions and screenshots methods*/
 public class DriverManager {
 	public static WebDriver driver;
 	public WebElement element;
@@ -39,7 +34,7 @@ public class DriverManager {
 	}
 	
 	
-
+/** this method selects the locator and returns the respective web element*/
 	public WebElement elementCreator(Step Obj) {
 		switch (Obj.getLocator().toLowerCase()) {
 		case "name":
@@ -65,6 +60,7 @@ public class DriverManager {
 		return element;
 
 	}
+	/**This methos selects the locator and returns the respective web element for the drag n drop action*/
 	public WebElement elementCreatorDrag(Step Obj) {
 		switch (Obj.getDestinationLocator().toLowerCase()) {
 		case "name":
@@ -90,32 +86,39 @@ public class DriverManager {
 		return element;
 
 	}
-
+/**This method Takes a screenshot */
 	 public static void takeSnapShot(Step Obj) throws Exception{
 		 if(Obj.getScreenshoot()==true) {
-				 //Convert web driver object to TakeScreenshot
+				 /**Convert web driver object to TakeScreenshot*/
 
 		        TakesScreenshot scrShot =((TakesScreenshot)driver);
 
-		        //Call getScreenshotAs method to create image file
+		        /**Call getScreenshotAs method to create image file*/
 
 		                File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 
-		            //Move image file to new destination
+		            /**Move image file to new destination*/
 
 		                File DestFile=new File("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+Obj.getTcName()+"\\Step "+Obj.getStep()+" "+Obj.getAccion()+".png");
 		                FileUtils.copyFile(SrcFile, DestFile);
 				System.out.print("Screenshot taken");
 			}
 	    }
-
+	 /**This method reads the action from the object step, and call the methods elementCreator to create web elements and execute them */
 	public void executeStep(Step Obj) throws Exception {
-		LocalDateTime myObj = LocalDateTime.now();
+		/** Create an object to read the local time*/
+		LocalDateTime locaTime = LocalDateTime.now();
+		/** Create an object to format the time*/
 	     DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-	     String formattedDate = myObj.format(myFormatObj);
+	     /**The time is saved in a local string*/
+	     String formattedDate = locaTime.format(myFormatObj);
+	     /** The time is set in the time variant of the object*/
 	     Obj.setTime(formattedDate);
+	     /** A auxiliary Web element is created for later use */
 		WebElement auxElement = elementCreator(Obj);
+		/**an integer is created for later use*/
 		int wait = (int) Obj.getWaitTime();
+		/***/
 		Actions action = new Actions(driver);
 		boolean confirm=false;
 		Random random = new Random();
@@ -195,7 +198,7 @@ public class DriverManager {
 			if(confirm==true) {
 				System.out.println("The element contains "+Obj.getValueAccion());
 			}else {
-				System.out.println("The element does not conatains "+Obj.getValueAccion());
+				System.out.println("The element does not contains "+Obj.getValueAccion());
 			}
 			break;
 		case "randuser":
