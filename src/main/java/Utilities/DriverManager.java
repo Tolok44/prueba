@@ -12,7 +12,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.commons.io.FileUtils;
 /** This class manages the driver, has all the actions and screenshots methods*/
 public class DriverManager {
@@ -60,7 +62,7 @@ public class DriverManager {
 		return element;
 
 	}
-	/**This methos selects the locator and returns the respective web element for the drag n drop action*/
+	/**This method selects the locator and returns the respective web element for the drag n drop action*/
 	public WebElement elementCreatorDrag(Step Obj) {
 		switch (Obj.getDestinationLocator().toLowerCase()) {
 		case "name":
@@ -80,6 +82,33 @@ public class DriverManager {
 			break;
 		case "tagName":
 			element = driver.findElement(By.tagName(Obj.getDestinationLocatorValue()));
+			break;
+		}
+
+		return element;
+
+	}
+	/**This method selects the locator and returns the respective web element, returns a wait till an element is visible*/
+	public WebElement waitCreator(Step Obj) {
+		WebDriverWait wait=new WebDriverWait(driver, 20);
+		switch (Obj.getDestinationLocator().toLowerCase()) {
+		case "name":
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(Obj.getValueLocator())));
+			break;
+		case "classname":
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(Obj.getValueLocator())));
+			break;
+		case "cssselector":
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(Obj.getValueLocator())));
+			break;
+		case "id":
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(Obj.getValueLocator())));
+			break;
+		case "xpath":
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Obj.getValueLocator())));
+			break;
+		case "tagName":
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName(Obj.getValueLocator())));
 			break;
 		}
 
@@ -166,8 +195,9 @@ public class DriverManager {
 			select.selectByIndex(Integer.parseInt(Obj.getValueAccion()));
 			break;
 		case "Wait":
+			System.out.println("waiting element "+Obj.getValueLocator());
 			takeSnapShot(Obj);
-			Thread.sleep(wait*10000);	
+			waitCreator(Obj);
 			break;
 		case "implicitlyWait":
 			takeSnapShot(Obj);

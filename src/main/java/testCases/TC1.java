@@ -38,7 +38,6 @@ public class TC1 {
 			/**a web element is created  and executed*/
 			try {
 			driverManager.executeStep(stepList.get(i));
-			driver.manage().timeouts().implicitlyWait(Integer.parseInt(stepList.get(i).getTime()),TimeUnit.SECONDS);				
 			}catch(Exception e) {
 			      System.out.println(" ups something went  wrong.");
 			      stepList.get(i).setPass(false);
