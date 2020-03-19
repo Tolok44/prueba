@@ -88,33 +88,6 @@ public class DriverManager {
 		return element;
 
 	}
-	/**This method selects the locator and returns the respective web element, returns a wait till an element is visible*/
-	public WebElement waitCreator(Step Obj) {
-		WebDriverWait wait=new WebDriverWait(driver, 20);
-		switch (Obj.getDestinationLocator().toLowerCase()) {
-		case "name":
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(Obj.getValueLocator())));
-			break;
-		case "classname":
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(Obj.getValueLocator())));
-			break;
-		case "cssselector":
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(Obj.getValueLocator())));
-			break;
-		case "id":
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(Obj.getValueLocator())));
-			break;
-		case "xpath":
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Obj.getValueLocator())));
-			break;
-		case "tagName":
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName(Obj.getValueLocator())));
-			break;
-		}
-
-		return element;
-
-	}
 /**This method Takes a screenshot */
 	 public static void takeSnapShot(Step Obj) throws Exception{
 		 if(Obj.getScreenshoot()==true) {
@@ -168,7 +141,7 @@ public class DriverManager {
 			break;
 		case "typenumeric":
 			takeSnapShot(Obj);
-			String numeric=Obj.waitTime+"";
+			String numeric=Obj.numericValue+"";
 			String ignoredotcero=numeric.replace(".0","");
 			auxElement.sendKeys(ignoredotcero);
 			break;
@@ -193,15 +166,6 @@ public class DriverManager {
 			takeSnapShot(Obj);
 			select = new Select(elementCreator(Obj));
 			select.selectByIndex(Integer.parseInt(Obj.getValueAccion()));
-			break;
-		case "Wait":
-			System.out.println("waiting element "+Obj.getValueLocator());
-			takeSnapShot(Obj);
-			waitCreator(Obj);
-			break;
-		case "implicitlyWait":
-			takeSnapShot(Obj);
-			driver.manage().timeouts().implicitlyWait(wait, TimeUnit.SECONDS);
 			break;
 		case "alert":
 			takeSnapShot(Obj);

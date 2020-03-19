@@ -10,14 +10,14 @@ public class Step {
 	public String locator;
 	public String valueLocator;
 	public boolean screenshot;
-	public double waitTime;
+	public double numericValue;
 	public boolean pass;
 	public String time;
 	public String destinationLocator;
 	public String destinationLocatorValue;
 	
 
-	public Step(String tcName,double step, String description,String accion,String vAccion, String locator, String vLocator,boolean screenshot,double waitTime,boolean pass,String time,String destinationLocator,String destinationLocatorValue) {
+	public Step(String tcName,double step, String description,String accion,String vAccion, String locator, String vLocator,boolean screenshot,double numericValue,boolean pass,String time,String destinationLocator,String destinationLocatorValue) {
 		this.tcName=tcName;
 		this.step=step;
 		this.description=description;
@@ -26,7 +26,7 @@ public class Step {
 		this.locator=locator;
 		this.valueLocator=vLocator;
 		this.screenshot=screenshot;
-		this.waitTime=waitTime;
+		this.numericValue=numericValue;
 		this.pass=pass;
 		this.time=time;
 		this.destinationLocator=destinationLocator;
@@ -37,18 +37,14 @@ public class Step {
 	
 
 
-
-
 	@Override
 	public String toString() {
 		return "Step [tcName=" + tcName + ", step=" + step + ", description=" + description + ", accion=" + accion
 				+ ", valueAccion=" + valueAccion + ", locator=" + locator + ", valueLocator=" + valueLocator
-				+ ", screenshot=" + screenshot + ", waitTime=" + waitTime + ", pass=" + pass + ", time=" + time
+				+ ", screenshot=" + screenshot + ", numericValue=" + numericValue + ", pass=" + pass + ", time=" + time
 				+ ", destinationLocator=" + destinationLocator + ", destinationLocatorValue=" + destinationLocatorValue
 				+ "]";
 	}
-
-
 
 
 
@@ -105,11 +101,11 @@ public class Step {
 	}
 
 	public double getWaitTime() {
-		return waitTime;
+		return numericValue;
 	}
 
 	public void setWaitTime(double waitTime) {
-		this.waitTime = waitTime;
+		this.numericValue = waitTime;
 	}
 
 	public String getTcName() {

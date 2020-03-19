@@ -22,6 +22,7 @@ public class TC1 {
 		System.setProperty("webdriver.chrome.driver","C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\driver\\chromedriver.exe" );
 		 driver = new ChromeDriver();
 		 driverManager.setDriver(driver);
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		 /**Creates an Object OpenHtml*/
 		 OpenHtml openHtml=new OpenHtml();
 		 reportMethod report= new reportMethod();

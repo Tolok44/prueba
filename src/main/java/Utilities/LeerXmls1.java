@@ -29,7 +29,7 @@ public class LeerXmls1 {
 		String tcName = "", action = "", description = "", vAccion = "", locator = "", vLocator = "", time = "",
 				destination = "", destinationLocator = "";
 		double Step = 0;
-		double waitTime = 0;
+		double numericValue = 0;
 		boolean screenshot = false;
 		boolean pass = true;
 		Step aux;
@@ -93,13 +93,13 @@ public class LeerXmls1 {
 								break;
 
 							case 9:
-								waitTime = row.getCell(c).getNumericCellValue();
+								numericValue = row.getCell(c).getNumericCellValue();
 								break;
 							}
 						}
 					}
 				}
-				aux = new Step(tcName, Step, description, action, vAccion, locator, vLocator, screenshot, waitTime,
+				aux = new Step(tcName, Step, description, action, vAccion, locator, vLocator, screenshot, numericValue,
 						pass, time, destination, destinationLocator);
 				TC.add(aux);
 				tcName = "";
