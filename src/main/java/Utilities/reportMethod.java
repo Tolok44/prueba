@@ -11,15 +11,15 @@ public class reportMethod {
 	 PrintWriter printw = null;
 	 //We create a method to create a report
 	public void reportMaker(ArrayList<Step> stepList) {
-		//A printer is created
-		try{
-			//declare the file location
-		     filewriter = new FileWriter("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\src\\main\\java\\reports\\reporte.html");
+		String tcname="";
+		tcname=stepList.get(2).getTcName();
+	try{
+	     filewriter = new FileWriter("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\src\\main\\java\\reports\\"+tcname+".html");//declarar el archivo
 		     //Create a print object to write the html code
 		     printw = new PrintWriter(filewriter);
 		     //Initialize the html doc 
 		     printw.println("<html>");
-		     printw.println("<head><title>Reporte</title> "
+		     printw.println("<head><title>Reporte "+tcname+"</title> "
 		     		+"<link rel=\"icon\" href=\"../img/Thanos.png\" />" + 
 		     		"<link rel=\"stylesheet\" href=\"../css/bootstrap.min.css\">" + 
 		     		"<link rel=\"stylesheet\" href=\"../css/estilos.css\">" + 

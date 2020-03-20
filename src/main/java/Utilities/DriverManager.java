@@ -128,61 +128,60 @@ public class DriverManager {
 				
 		switch (Obj.getAccion().toLowerCase()) {
 		case "navigate":
-			takeSnapShot(Obj);
 			driver.navigate().to(Obj.getValueAccion());
+			takeSnapShot(Obj);
 			break;
 		case "quit":
-			takeSnapShot(Obj);
 			driver.quit();
+			takeSnapShot(Obj);
 			break;
 		case "type":
-			takeSnapShot(Obj);
 			auxElement.sendKeys(Obj.getValueAccion());
+			takeSnapShot(Obj);
 			break;
 		case "typenumeric":
-			takeSnapShot(Obj);
 			String numeric=Obj.numericValue+"";
 			String ignoredotcero=numeric.replace(".0","");
 			auxElement.sendKeys(ignoredotcero);
+			takeSnapShot(Obj);
 			break;
 		case "click":
-			takeSnapShot(Obj);
 			auxElement.click();
+			takeSnapShot(Obj);
 			break;
 		case "clear":
-			takeSnapShot(Obj);
 			auxElement.clear();
+			takeSnapShot(Obj);
 			break;
 		case "enter":
-			takeSnapShot(Obj);
 			auxElement.sendKeys(Keys.ENTER);
+			takeSnapShot(Obj);
 			break;
 		case "selectByValue":
-			takeSnapShot(Obj);
 			select = new Select(elementCreator(Obj));
 			select.selectByValue(Obj.getValueAccion());
+			takeSnapShot(Obj);
 			break;
 		case "selectByIndex":
-			takeSnapShot(Obj);
 			select = new Select(elementCreator(Obj));
 			select.selectByIndex(Integer.parseInt(Obj.getValueAccion()));
+			takeSnapShot(Obj);
 			break;
 		case "alert":
-			takeSnapShot(Obj);
 			driver.switchTo().alert().accept();
+			takeSnapShot(Obj);
 			break;
 		case "confirm":
-			takeSnapShot(Obj);
 			confirm=auxElement.isDisplayed();
 			if(confirm==true) {
 				System.out.println("The element exists");
 			}else {
 				System.out.println("The element does not exists");
-
+				Obj.setPass(false);
 			}
+			takeSnapShot(Obj);
 			break;
 		case "compto":
-			takeSnapShot(Obj);
 			System.out.println("comparing...");
 			if(Obj.valueAccion.equals(auxElement.getText())) {
 				confirm=true;
@@ -192,24 +191,26 @@ public class DriverManager {
 			if(confirm==true) {
 				System.out.println("The element contains "+Obj.getValueAccion());
 			}else {
-				System.out.println("The element does not contains "+Obj.getValueAccion());
+				System.out.println("The element does not contain "+Obj.getValueAccion());
+				Obj.setPass(false);
 			}
+			takeSnapShot(Obj);
 			break;
 		case "randuser":
-			takeSnapShot(Obj);
 		    rand=random.nextInt(10000);
 		    System.out.println(rand);
 			auxElement.sendKeys("Rafita"+rand);
+			takeSnapShot(Obj);
 			break;
 		case "randemail":
-			takeSnapShot(Obj);
 			rand=random.nextInt(10000);
 			auxElement.sendKeys("Rafita"+rand+"@gmail.com");
+			takeSnapShot(Obj);
 			break;
-			
 		case "dragndrop":
 			WebElement to=elementCreatorDrag(Obj);
 			action.dragAndDrop(auxElement, to).build().perform();
+			takeSnapShot(Obj);
 		break;
 			
 		}
