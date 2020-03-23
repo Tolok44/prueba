@@ -21,8 +21,6 @@ public class DriverManager {
 	public static WebDriver driver;
 	public WebElement element;
 	public Select select;
-	 
-
 	public DriverManager() {
 		super();
 	}
@@ -32,6 +30,7 @@ public class DriverManager {
 	}
 
 	public void setDriver(WebDriver driver) {
+		
 		this.driver = driver;
 	}
 	

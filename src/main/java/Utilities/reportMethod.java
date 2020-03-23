@@ -4,20 +4,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-
+/**in this method an html file is created*/
 public class reportMethod {
-	//Initialize FileWrite and PrintWriter to write HTML
+	/**Initialize FileWrite and PrintWriter to write HTML*/
 	FileWriter filewriter = null;
 	 PrintWriter printw = null;
-	 //We create a method to create a report
+	 /**We create a method to create a report*/
 	public void reportMaker(ArrayList<Step> stepList) {
 		String tcname="";
 		tcname=stepList.get(2).getTcName();
 	try{
 	     filewriter = new FileWriter("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\src\\main\\java\\reports\\"+tcname+".html");//declarar el archivo
-		     //Create a print object to write the html code
+		     /**Create a print object to write the html code*/
 		     printw = new PrintWriter(filewriter);
-		     //Initialize the html doc 
+		     /**Initialize the html doc */
 		     printw.println("<html>");
 		     printw.println("<head><title>Reporte "+tcname+"</title> "
 		     		+"<link rel=\"icon\" href=\"../img/Thanos.png\" />" + 
@@ -28,7 +28,7 @@ public class reportMethod {
 		     		+ "</head>");    
 		     printw.println("<body>");
 		    
-		     //navigation bar creation
+		     /**navigation bar creation*/
 		     printw.println("<nav class=\"navbar-custom\">" + 
 		     		"    <a class=\"navbar-brand\" href=\"#\">" + 
 		     		"      <img src=\"../img/iconfinder_JD-27_2624867.png\" width=\"40\" height=\"40\" class=\"d-inline-block align-top\">" + 
@@ -36,7 +36,7 @@ public class reportMethod {
 		     		"    </a>" + 
 		     		"  </nav>");
 	
-		     //A table and their headers are created.
+		     /**A table and their headers are created.*/
 		     printw.println(" <div>" + 
 		     		"    <table class=\"table table-hover\">" + 
 		     		"        <thead>" + 

@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Execute {
 	ArrayList<Step> stepList;
-	public void execute( ArrayList<ArrayList> tcList) {
+	public void execute( ArrayList<ArrayList> tcList)   {
 	
 		
 		DriverManager driverManager=new DriverManager();
@@ -18,6 +18,7 @@ public class Execute {
 		driver = new ChromeDriver();
 		DriverManager driverManager1=new DriverManager();
 		reportMethod report= new reportMethod();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driverManager1.setDriver(driver);
 			
 		
@@ -31,16 +32,15 @@ public class Execute {
 					System.out.println(stepList.get(i).toString());
 					//se crea un Web element y se ejecutan
 					try {
-						driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 					driverManager1.executeStep(stepList.get(i));
-					}catch(Exception e) {
-					      System.out.println(" ups something went wrong.");
-					      e.printStackTrace();
+					}catch(Exception  e) {
+					     System.out.println(" ups something went wrong.");
 					      stepList.get(i).setPass(false);
 					}
 					}
 					report.reportMaker(stepList);
 				}
+	
 	}
 
 }
