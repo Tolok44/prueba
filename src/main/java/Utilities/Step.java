@@ -145,4 +145,10 @@ public class Step {
 	public void setDestinationLocatorValue(String destinationLocatorValue) {
 		this.destinationLocatorValue = destinationLocatorValue;
 	}
+	public double getNumericValue() {
+		return numericValue;
+	}
+	public void setNumericValue(double numericValue) {
+		this.numericValue = numericValue;
+	}
 }

@@ -2,6 +2,7 @@ package Utilities;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -90,10 +91,17 @@ public class WiniumManager {
 		carpetFrameWork.click();
 //		WebElement selPic = picture.findElement(By.name("sakila"));
 //		selPic.click();
+		List<WebElement> allsvg=driver.findElements(By.xpath("[contains(@Name, 'Open')]"));
 		
+		for(WebElement ele:allsvg)
+		{
+			if(ele.isEnabled()) {
+				ele.click();
+			}else {
+				
+			}
+		}
 		//clic en el boton de Open
-		WebElement btnW = window.findElement(By.xpath("//*[contains(@ClassName, 'Button')] and [contains(@Name, 'Open')]"));
-		btnW.click();
 		
 		Thread.sleep(5000);
 		driverW.quit();//Cierra de winium

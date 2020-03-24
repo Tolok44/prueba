@@ -3,9 +3,11 @@ package Utilities;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -210,6 +212,14 @@ public class DriverManager {
 			WebElement to=elementCreatorDrag(Obj);
 			action.dragAndDrop(auxElement, to).build().perform();
 			takeSnapShot(Obj);
+		break;
+		case "calendar":
+			CalendarHandler calendar1=new CalendarHandler();
+			calendar1.calendar(driver,Obj.numericValue);
+		break;
+		case"scroll":
+	        JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("window.scrollBy(0,1000)");
 		break;
 			
 		}
