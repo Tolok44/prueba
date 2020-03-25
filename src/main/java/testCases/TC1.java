@@ -21,8 +21,6 @@ public class TC1 {
 		/** Creates an OpenHtml object*/
 		OpenHtml openHtml = new OpenHtml();
 
-		// Manda el driver a element
-
 		LeerXmls1 TC = new LeerXmls1();
 
 		/**Reading of excels files*/
@@ -40,7 +38,7 @@ public class TC1 {
 			ex.printStackTrace();
 		}
 
-		tcList = TC.obtenObjetos(rute);
+		tcList = TC.getTestCases(rute);
 
 		/** -------------------------------------------Menu creation for test case selection----------*/
 
@@ -50,7 +48,7 @@ public class TC1 {
 		/**creates an array of radio buttons*/
 		JRadioButton[] radio = new JRadioButton[tcList.size()];
 
-		/**thus for saves the  name of test cases*/
+		/**this for saves the  name of test cases*/
 		for (int x = 0; x < tcList.size(); x++) {
 			Step testCasename = (Step) tcList.get(x).get(0);
 
@@ -95,11 +93,12 @@ public class TC1 {
 						alCad.add(radio[t].getLabel());
 					}
 				}
+				/***/
 		int tcasesArrayInt[] = new int[alCad.size()];		
 		for(int i = 0; i < alCad.size(); i++) {
 			for(int x = 0; x < cad.length; x++) {
-				Step aaaaaaaaa = (Step) tcList.get(x).get(x);
-				if (alCad.get(i).equals(  aaaaaaaaa.getTcName() )) {
+				Step step = (Step) tcList.get(x).get(2);
+				if (alCad.get(i).equals(step.getTcName() )) {
 					tcasesArrayInt[i] = x;
 				}
 			}
@@ -110,12 +109,13 @@ public class TC1 {
 			x = tcasesArrayInt[i];
 			tcList2.add(tcList.get(x));
 		}
-		
+		/**here we create an execute object and send it he list of test cases to execute*/
 		Execute exe = new Execute();
 		try {
 		exe.execute(tcList2);
 }catch(Exception  e) {
-    System.out.println(" ups something went wrong.");
+	/**if the is an exception an error message is printed*/
+    System.out.println(" ups something went wrong in the test case.");
 }		
 		for (int i = 0; i < tcList2.size(); i++) {
 			Step pasoPrueba = (Step) tcList2.get(i).get(i);

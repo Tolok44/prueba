@@ -1,12 +1,12 @@
 package Utilities;
 
-//In this class there are all the characteristics of an step
+/**In this class there are all the characteristics of an step*/
 public class Step {
 	public String tcName;
 	public double step;
 	public String description;
-	public String accion;
-	public String valueAccion;
+	public String action;
+	public String valueAction;
 	public String locator;
 	public String valueLocator;
 	public boolean screenshot;
@@ -21,8 +21,8 @@ public class Step {
 		this.tcName=tcName;
 		this.step=step;
 		this.description=description;
-		this.accion=accion;
-		this.valueAccion=vAccion;
+		this.action=accion;
+		this.valueAction=vAccion;
 		this.locator=locator;
 		this.valueLocator=vLocator;
 		this.screenshot=screenshot;
@@ -39,8 +39,8 @@ public class Step {
 
 	@Override
 	public String toString() {
-		return "Step [tcName=" + tcName + ", step=" + step + ", description=" + description + ", accion=" + accion
-				+ ", valueAccion=" + valueAccion + ", locator=" + locator + ", valueLocator=" + valueLocator
+		return "Step [tcName=" + tcName + ", step=" + step + ", description=" + description + ", accion=" + action
+				+ ", valueAccion=" + valueAction + ", locator=" + locator + ", valueLocator=" + valueLocator
 				+ ", screenshot=" + screenshot + ", numericValue=" + numericValue + ", pass=" + pass + ", time=" + time
 				+ ", destinationLocator=" + destinationLocator + ", destinationLocatorValue=" + destinationLocatorValue
 				+ "]";
@@ -59,23 +59,23 @@ public class Step {
 	}
 
 
-	public String getAccion() {
-		return accion;
+	public String getAction() {
+		return action;
 	}
 
 
-	public void setAccion(String accion) {
-		this.accion = accion;
+	public void setAction(String accion) {
+		this.action = accion;
 	}
 
 
-	public String getValueAccion() {
-		return valueAccion;
+	public String getValueAction() {
+		return valueAction;
 	}
 
 
-	public void setValueAccion(String valueAccion) {
-		this.valueAccion = valueAccion;
+	public void setValueAction(String valueAccion) {
+		this.valueAction = valueAccion;
 	}
 
 
@@ -100,13 +100,6 @@ public class Step {
 		this.screenshot = screenshot;
 	}
 
-	public double getWaitTime() {
-		return numericValue;
-	}
-
-	public void setWaitTime(double waitTime) {
-		this.numericValue = waitTime;
-	}
 
 	public String getTcName() {
 		return tcName;

@@ -12,29 +12,28 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class LeerXmls1 {
 	public XSSFRow row;
 
-	public ArrayList<ArrayList> obtenObjetos(String name) throws IOException {
-
+	public ArrayList<ArrayList> getTestCases(String rute) throws IOException {
+		/***/
 		 ArrayList<ArrayList> listTC = new ArrayList();
 		
-		FileInputStream fis = new FileInputStream(new File(name));
+		FileInputStream fis = new FileInputStream(new File(rute));
 
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
 		XSSFSheet spreadsheet;
 
-		// Obtengo el número de columnas ocupadas en la hoja
+		/** Gets the number of sheets whit scripts*/
 		int cols = 0;
-		
-		// Cadena que usamos para almacenar la lectura de la celda
+		/**Variables to save the respective cell data*/
 		String tcName="",action = "", description = "", vAccion = "", locator = "", vLocator = "",time="",destination="",destinationLocator="";
 		double Step = 0;
-		double waitTime = 0;
+		double numericValue = 0;
 		boolean screenshot = false;
 		boolean pass=true;
-
 		Step aux;
 		int rows=0;
 		int x = 0;
+		/**prints the test case names*/
 		System.out.println(workbook.getNumberOfSheets());
 		while( x <= (workbook.getNumberOfSheets()-1)) {
 			ArrayList<Step> TC=new ArrayList();
@@ -90,20 +89,14 @@ public class LeerXmls1 {
 								break;
 
 							case 9:
-								waitTime = row.getCell(c).getNumericCellValue();
+								numericValue = row.getCell(c).getNumericCellValue();
 								break;
 							}
 						}
 					}
 				}
-				aux = new Step(tcName,Step, description, action, vAccion, locator, vLocator, screenshot, waitTime,pass,time,destination,destinationLocator);
+				aux = new Step(tcName,Step, description, action, vAccion, locator, vLocator, screenshot, numericValue,pass,time,destination,destinationLocator);
 				TC.add(aux);
-				tcName="";
-				action = "";
-				description = "";
-				vAccion = "";
-				locator = "";
-				vLocator = "";	
 			}			
 			x++;
 			listTC.add(TC);

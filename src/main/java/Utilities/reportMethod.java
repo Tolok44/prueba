@@ -19,7 +19,7 @@ public class reportMethod {
 		     printw = new PrintWriter(filewriter);
 		     /**Initialize the html doc */
 		     printw.println("<html>");
-		     printw.println("<head><title>Reporte "+tcname+"</title> "
+		     printw.println("<head><title>Report "+tcname+"</title> "
 		     		+"<link rel=\"icon\" href=\"../img/Thanos.png\" />" + 
 		     		"<link rel=\"stylesheet\" href=\"../css/bootstrap.min.css\">" + 
 		     		"<link rel=\"stylesheet\" href=\"../css/estilos.css\">" + 
@@ -52,32 +52,32 @@ public class reportMethod {
 		     		"          </tr>" + 
 		     		"        </thead>"
 		     		);
-		     //All the steps from their respective test cases are printed by a for cycle
+		     /**All the steps from their respective test cases are printed by a for cycle*/
 		     for(int i = 0; i < stepList.size(); i++)
 		     {
 		    	 printw.println("<tbody>" + "<tr>");
 		    	 printw.println("<th scope=\"row\">" + stepList.get(i).tcName + "</th>"+ 
 		    			 "<th scope=\"row\">" + stepList.get(i).step + "</th>"+ 
 		    	 		"<td>" + stepList.get(i).description + "</td>"+ 
-		    	 		"<td>" + stepList.get(i).accion + "</td>" + 
-		    	 		"<td>" + stepList.get(i).valueAccion + "</td>");
-		    	 //here verifies if an step passed or not 
+		    	 		"<td>" + stepList.get(i).action + "</td>" + 
+		    	 		"<td>" + stepList.get(i).valueAction + "</td>");
+		    	 /**here verifies if an step passed or not*/
 		    	 if(stepList.get(i).isPass() == true) {
 		    		 printw.println("<td><span><img src=\"../img/pass-icon.png\" height=\"30\" width=\"30\"></span></td>");
 		    	 }else {
 		    		 printw.println("<td><span><img src=\"../img/failed-icon.png\" height=\"30\" width=\"30\"></span></td>");
 		    	 }
 		    	 		
-		    	 	printw.println("<td><a href=\"C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+stepList.get(i).getTcName()+"\\Step "+ stepList.get(i).step+" "+stepList.get(i).accion +".png\"> Screenshot</a></td>"+
+		    	 	printw.println("<td><a href=\"C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+stepList.get(i).getTcName()+"\\Step "+ stepList.get(i).step+" "+stepList.get(i).action +".png\"> Screenshot</a></td>"+
 		    	 	"<td> " + stepList.get(i).getTime() + "</td>"+ 
 		    	 	"</tr> </div>");
 		     }
-		     //we close the html code.
+		     /**we close the html code.*/
 		     printw.println("</body>");
 		     printw.println("</html>");
-		     printw.close();//we close the print object.
-		     System.out.println("Reporte generado exitosamente");//If everything success will send a console message.
-	}catch(IOException e){ //If it fails will send a message with the exception.
+		     printw.close();/**we close the print object.*/
+		     System.out.println("Report created yay");/**If everything success will send a console message.*/
+	}catch(IOException e){ /**If it fails will send a message with the exception.*/
 		e.getMessage();
 	}
 	}

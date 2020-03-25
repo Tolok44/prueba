@@ -102,7 +102,7 @@ public class DriverManager {
 
 		            /**Move image file to new destination*/
 
-		                File DestFile=new File("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+Obj.getTcName()+"\\Step "+Obj.getStep()+" "+Obj.getAccion()+".png");
+		                File DestFile=new File("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+Obj.getTcName()+"\\Step "+Obj.getStep()+" "+Obj.getAction()+".png");
 		                FileUtils.copyFile(SrcFile, DestFile);
 				System.out.print("Screenshot taken");
 			}
@@ -120,58 +120,71 @@ public class DriverManager {
 	     /** A auxiliary Web element is created for later use */
 		WebElement auxElement = elementCreator(Obj);
 		/**an integer is created for later use*/
-		int wait = (int) Obj.getWaitTime();
-		/***/
+		int num = (int) Obj.getNumericValue();
+		/** Create an action for later use*/
 		Actions action = new Actions(driver);
+		/**Create a boolean for later use*/
 		boolean confirm=false;
+		/**Create a random object for later use*/
 		Random random = new Random();
 		int rand=0;
-				
-		switch (Obj.getAccion().toLowerCase()) {
+				/**Here we read the value action */
+		switch (Obj.getAction().toLowerCase()) {
+		/**Here we get a destination to navigate the driver whit*/
 		case "navigate":
-			driver.navigate().to(Obj.getValueAccion());
+			driver.navigate().to(Obj.getValueAction());
 			takeSnapShot(Obj);
 			break;
+			/**The action quit quits the driver*/
 		case "quit":
 			driver.quit();
 			takeSnapShot(Obj);
 			break;
+			/**the action type sends keys to a web element*/
 		case "type":
-			auxElement.sendKeys(Obj.getValueAccion());
+			auxElement.sendKeys(Obj.getValueAction());
 			takeSnapShot(Obj);
 			break;
+			/**in this action we can type a numeric value*/
 		case "typenumeric":
 			String numeric=Obj.numericValue+"";
 			String ignoredotcero=numeric.replace(".0","");
 			auxElement.sendKeys(ignoredotcero);
 			takeSnapShot(Obj);
 			break;
+			/**in this action the element makes a click*/
 		case "click":
 			auxElement.click();
 			takeSnapShot(Obj);
 			break;
+			/**this action cleans a field*/
 		case "clear":
 			auxElement.clear();
 			takeSnapShot(Obj);
 			break;
+			/**this action types an enter in a field*/
 		case "enter":
 			auxElement.sendKeys(Keys.ENTER);
 			takeSnapShot(Obj);
 			break;
+			/**this action selects an element by value*/
 		case "selectByValue":
 			select = new Select(elementCreator(Obj));
-			select.selectByValue(Obj.getValueAccion());
+			select.selectByValue(Obj.getValueAction());
 			takeSnapShot(Obj);
 			break;
+			/**this action selects an element by index*/
 		case "selectByIndex":
 			select = new Select(elementCreator(Obj));
-			select.selectByIndex(Integer.parseInt(Obj.getValueAccion()));
+			select.selectByIndex(Integer.parseInt(Obj.getValueAction()));
 			takeSnapShot(Obj);
 			break;
+			/**this action closes an alert*/
 		case "alert":
 			driver.switchTo().alert().accept();
 			takeSnapShot(Obj);
 			break;
+			/**this action confirms that a element exists or not*/
 		case "confirm":
 			confirm=auxElement.isDisplayed();
 			if(confirm==true) {
@@ -182,41 +195,49 @@ public class DriverManager {
 			}
 			takeSnapShot(Obj);
 			break;
+			/**this action compares the text of an element with the value action*/
 		case "compto":
 			System.out.println("comparing...");
-			if(Obj.valueAccion.equals(auxElement.getText())) {
+			if(Obj.valueAction.equals(auxElement.getText())) {
 				confirm=true;
 			}else {
 				confirm=false;
 			}
 			if(confirm==true) {
-				System.out.println("The element contains "+Obj.getValueAccion());
+				System.out.println("The element contains "+Obj.getValueAction());
 			}else {
-				System.out.println("The element does not contain "+Obj.getValueAccion());
+				System.out.println("The element does not contain "+Obj.getValueAction());
 				Obj.setPass(false);
 			}
 			takeSnapShot(Obj);
 			break;
+			/**this action creates a random user*/
 		case "randuser":
 		    rand=random.nextInt(10000);
 		    System.out.println(rand);
-			auxElement.sendKeys("Rafita"+rand);
+			auxElement.sendKeys("Tunas"+rand);
 			takeSnapShot(Obj);
 			break;
+			/**this action creates a random email*/
 		case "randemail":
 			rand=random.nextInt(10000);
-			auxElement.sendKeys("Rafita"+rand+"@gmail.com");
+			auxElement.sendKeys("Tunas"+rand+"@gmail.com");
 			takeSnapShot(Obj);
 			break;
+			/**this action creates a dragndrop element an moves one element to a destination*/
 		case "dragndrop":
 			WebElement to=elementCreatorDrag(Obj);
 			action.dragAndDrop(auxElement, to).build().perform();
 			takeSnapShot(Obj);
 		break;
+		/**this action opens the strat date calendar*/
 		case "calendar":
 			CalendarHandler calendar1=new CalendarHandler();
-			calendar1.calendar(driver,Obj.numericValue);
+			calendar1.calendar(driver);
+			takeSnapShot(Obj);
+
 		break;
+		/**this action scrolls down the application*/
 		case"scroll":
 	        JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("window.scrollBy(0,1000)");

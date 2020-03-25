@@ -12,19 +12,19 @@ public class Execute {
 	
 		
 		DriverManager driverManager=new DriverManager();
-		
 		WebDriver driver;
 		System.setProperty("webdriver.chrome.driver","C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\driver\\chromedriver.exe" );
 		driver = new ChromeDriver();
 		DriverManager driverManager1=new DriverManager();
 		reportMethod report= new reportMethod();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
 		driverManager1.setDriver(driver);
 			
 		
-		//lee cada uno de los steps
+		/**reads every test case in the tclist*/
 				for(int x=0;x<tcList.size();x++) {
-					//Receive la lista de pasos del test case
+					/**reads all */
 					stepList=tcList.get(x);
 					//itera cada paso para mandarlos al driver manager
 					for(int i=1;i<stepList.size();i++) {

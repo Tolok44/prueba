@@ -81,9 +81,12 @@ public class WiniumManager {
 		//WebElements para seleccionar la imagen dentro del panel "Items View"
 		WebElement carpet = driverW.findElement(By.name("Prueba"));
 		carpet.click();
-		Open1.click();
-		carpet.sendKeys(Keys.chord(Keys.ALT, "o"));
-	    
+List<WebElement> allsvg=driver.findElements(By.cssSelector("button"));
+		
+		for(WebElement ele:allsvg)
+		{
+				ele.click();
+		}	    
 		WebElement carpetFrameWork = driverW.findElement(By.name("frameWorkBatch3"));
 		carpetFrameWork.click();
 		
@@ -91,16 +94,7 @@ public class WiniumManager {
 		carpetFrameWork.click();
 //		WebElement selPic = picture.findElement(By.name("sakila"));
 //		selPic.click();
-		List<WebElement> allsvg=driver.findElements(By.xpath("[contains(@Name, 'Open')]"));
 		
-		for(WebElement ele:allsvg)
-		{
-			if(ele.isEnabled()) {
-				ele.click();
-			}else {
-				
-			}
-		}
 		//clic en el boton de Open
 		
 		Thread.sleep(5000);
