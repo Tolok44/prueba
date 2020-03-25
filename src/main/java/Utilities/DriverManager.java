@@ -102,9 +102,9 @@ public class DriverManager {
 
 		            /**Move image file to new destination*/
 
-		                File DestFile=new File("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+Obj.getTcName()+"\\Step "+Obj.getStep()+" "+Obj.getAction()+".png");
+		                File DestFile=new File("Screenshots/"+Obj.getTcName()+"/Step "+Obj.getStep()+" "+Obj.getAction()+".png");
 		                FileUtils.copyFile(SrcFile, DestFile);
-				System.out.print("Screenshot taken");
+				System.out.print("Screenshot taken ");
 			}
 	    }
 	 /**This method reads the action from the object step, and call the methods elementCreator to create web elements and execute them */
@@ -230,17 +230,25 @@ public class DriverManager {
 			action.dragAndDrop(auxElement, to).build().perform();
 			takeSnapShot(Obj);
 		break;
-		/**this action opens the strat date calendar*/
+		/**this action opens the start date calendar*/
 		case "calendar":
-			CalendarHandler calendar1=new CalendarHandler();
-			calendar1.calendar(driver);
+			List<WebElement> allsvg=driver.findElements(By.cssSelector("svg"));
+			
+			for(WebElement ele:allsvg)
+			{
+					ele.click();
+				
+			}
 			takeSnapShot(Obj);
-
 		break;
 		/**this action scrolls down the application*/
 		case"scroll":
 	        JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("window.scrollBy(0,1000)");
+		break;
+		/**action  to refresh the web page*/
+		case"refresh":
+	        driver.navigate().refresh();
 		break;
 			
 		}

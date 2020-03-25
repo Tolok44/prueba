@@ -1,17 +1,18 @@
-navigate
-quit
-type
-typenumeric
-click
-clear
-enter
-selectByValue
-selectByIndex
-Wait
-implicitlyWait
-alert
-confirm
-compto
-dragndrop
-randuser
-randemail
+navigate		/**Here we get a destination to navigate the driver whit*/
+quit			/**The action quit quits the driver*/
+type			/**the action type sends keys to a web element*/
+typenumeric		/**in this action we can type a numeric value*/
+click			/**in this action the element makes a click*/
+clear			/**this action cleans a field*/
+enter			/**this action types an enter in a field*/
+selectByValue		/**this action selects an element by value*/
+selectByIndex		/**this action selects an element by index*/
+alert			/**this action closes an alert*/
+confirm			/**this action confirms that a element exists or not*/
+compto			/**this action compares the text of an element with the value action*/
+calendar		/**this action opens the start date calendar*/
+scroll			/**this action scrolls down the application*/
+refresh 		/**action  to refresh the web page*/
+dragndrop		/**this action creates a dragndrop element an moves one element to a destination*/
+randuser		/**this action creates a random user*/
+randemail		/**this action creates a random email*/

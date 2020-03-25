@@ -38,7 +38,7 @@ public class LeerXmls1 {
 		while( x <= (workbook.getNumberOfSheets()-1)) {
 			ArrayList<Step> TC=new ArrayList();
 			spreadsheet = workbook.getSheetAt(x);
-			File directory = new File("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+workbook.getSheetName(x));
+			File directory = new File("Screenshots/"+workbook.getSheetName(x));
 			System.out.println(workbook.getSheetName(x));
 			rows = spreadsheet.getLastRowNum()+1;
 			for (int r = 0; r < rows; r++) {

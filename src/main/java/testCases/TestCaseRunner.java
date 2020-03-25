@@ -12,7 +12,7 @@ import Utilities.LeerXmls1;
 import Utilities.OpenHtml;
 import Utilities.Step;
 /** In this class the test cases are iterated and executed */
-public class TC1 {
+public class TestCaseRunner {
 	public static void main(String[] args) throws Exception {
 		/** In this class the test cases are iterated and executed */
 		ArrayList<ArrayList> tcList;

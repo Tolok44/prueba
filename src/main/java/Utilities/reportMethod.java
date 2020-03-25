@@ -14,7 +14,7 @@ public class reportMethod {
 		String tcname="";
 		tcname=stepList.get(2).getTcName();
 	try{
-	     filewriter = new FileWriter("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\src\\main\\java\\reports\\"+tcname+".html");//declarar el archivo
+	     filewriter = new FileWriter("src/main/java/reports/"+tcname+".html");//declarar el archivo
 		     /**Create a print object to write the html code*/
 		     printw = new PrintWriter(filewriter);
 		     /**Initialize the html doc */
@@ -41,7 +41,6 @@ public class reportMethod {
 		     		"    <table class=\"table table-hover\">" + 
 		     		"        <thead>" + 
 		     		"          <tr>" + 
-		     		"            <th scope=\"col\">Test Case Name</th>" + 
 		     		"            <th scope=\"col\">No. Step</th>" + 
 		     		"            <th scope=\"col\">Description</th>" + 
 		     		"            <th>Action</th>" + 
@@ -56,7 +55,7 @@ public class reportMethod {
 		     for(int i = 0; i < stepList.size(); i++)
 		     {
 		    	 printw.println("<tbody>" + "<tr>");
-		    	 printw.println("<th scope=\"row\">" + stepList.get(i).tcName + "</th>"+ 
+		    	 printw.println(
 		    			 "<th scope=\"row\">" + stepList.get(i).step + "</th>"+ 
 		    	 		"<td>" + stepList.get(i).description + "</td>"+ 
 		    	 		"<td>" + stepList.get(i).action + "</td>" + 
@@ -68,7 +67,7 @@ public class reportMethod {
 		    		 printw.println("<td><span><img src=\"../img/failed-icon.png\" height=\"30\" width=\"30\"></span></td>");
 		    	 }
 		    	 		
-		    	 	printw.println("<td><a href=\"C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\Screenshots\\"+stepList.get(i).getTcName()+"\\Step "+ stepList.get(i).step+" "+stepList.get(i).action +".png\"> Screenshot</a></td>"+
+		    	 	printw.println("<td><a href=\"../../../../Screenshots/"+tcname+"/Step "+ stepList.get(i).step+" "+stepList.get(i).action +".png\"> Screenshot</a></td>"+
 		    	 	"<td> " + stepList.get(i).getTime() + "</td>"+ 
 		    	 	"</tr> </div>");
 		     }
