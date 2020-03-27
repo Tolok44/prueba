@@ -104,6 +104,9 @@ public class ReadXmls {
 				}
 				aux = new Step(tcName, Step, description, action, vAccion, locator, vLocator, screenshot, numericValue,
 						pass, time, destination, destinationLocator);
+			
+				/** Here we save the steps in the auxiliary array. */
+				TC.add(aux);
 				tcName = "";
 				Step = 0;
 				description = "";
@@ -113,11 +116,8 @@ public class ReadXmls {
 				vLocator = "";
 				screenshot = false;
 				numericValue = 0.0;
-				pass = false;
 				destination = "";
 				destinationLocator = "";
-				/** Here we save the steps in the auxiliary array. */
-				TC.add(aux);
 			}
 			x++;
 			/** Here we add the test case to the list of test cases */

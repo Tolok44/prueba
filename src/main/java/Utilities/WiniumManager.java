@@ -18,10 +18,10 @@ import org.openqa.selenium.winium.WiniumDriverService;
 public class WiniumManager {
 	public void winiumManage() throws InterruptedException, IOException {
 		System.out.println("picking photo..");
-		/**Initialize Winium Driver y Winium Driver Service*/
+		/**Initialize Winium Driver and Winium Driver Service*/
 		WiniumDriver driverW = null;
 		WiniumDriverService service = null;
-		/**Initialize WiniumDriver Option and gave the rute of Driver*/
+		/**Initialize WiniumDriver Option and gave the route of Driver*/
 		DesktopOptions option = new DesktopOptions();
 		option.setDebugConnectToRunningApp(true);
 		File driverPath = new File("/driver/Winium.Desktop.Driver.exe");
