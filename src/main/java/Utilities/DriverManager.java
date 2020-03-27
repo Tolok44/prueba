@@ -242,7 +242,7 @@ public class DriverManager {
 			js.executeScript("window.scrollBy(0,1000)");
 			break;
 		/** action to refresh the web page */
-		case "refresh":
+		case "refresh1":
 			driver.navigate().refresh();
 			break;
 			/**this action picks a photo*/
@@ -250,8 +250,6 @@ public class DriverManager {
 			WiniumManager winium= new WiniumManager();
 			winium.winiumManage();
 			break;
-
-
 		}
 		takeSnapShot(Obj);
 	}

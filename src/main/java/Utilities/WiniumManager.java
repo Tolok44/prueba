@@ -17,7 +17,7 @@ import org.openqa.selenium.winium.WiniumDriverService;
 
 public class WiniumManager {
 	public void winiumManage() throws InterruptedException, IOException {
-
+		System.out.println("picking photo..");
 		/**Initialize Winium Driver y Winium Driver Service*/
 		WiniumDriver driverW = null;
 		WiniumDriverService service = null;
