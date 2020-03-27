@@ -1,6 +1,6 @@
 package Utilities;
 
-/**In this class there are all the characteristics of an step*/
+/** In this class there are all the characteristics of an step */
 public class Step {
 	public String tcName;
 	public double step;
@@ -15,27 +15,25 @@ public class Step {
 	public String time;
 	public String destinationLocator;
 	public String destinationLocatorValue;
-	
 
-	public Step(String tcName,double step, String description,String accion,String vAccion, String locator, String vLocator,boolean screenshot,double numericValue,boolean pass,String time,String destinationLocator,String destinationLocatorValue) {
-		this.tcName=tcName;
-		this.step=step;
-		this.description=description;
-		this.action=accion;
-		this.valueAction=vAccion;
-		this.locator=locator;
-		this.valueLocator=vLocator;
-		this.screenshot=screenshot;
-		this.numericValue=numericValue;
-		this.pass=pass;
-		this.time=time;
-		this.destinationLocator=destinationLocator;
-		this.destinationLocatorValue=destinationLocatorValue;
-		
+	public Step(String tcName, double step, String description, String accion, String vAccion, String locator,
+			String vLocator, boolean screenshot, double numericValue, boolean pass, String time,
+			String destinationLocator, String destinationLocatorValue) {
+		this.tcName = tcName;
+		this.step = step;
+		this.description = description;
+		this.action = accion;
+		this.valueAction = vAccion;
+		this.locator = locator;
+		this.valueLocator = vLocator;
+		this.screenshot = screenshot;
+		this.numericValue = numericValue;
+		this.pass = pass;
+		this.time = time;
+		this.destinationLocator = destinationLocator;
+		this.destinationLocatorValue = destinationLocatorValue;
+
 	}
-
-	
-
 
 	@Override
 	public String toString() {
@@ -46,48 +44,42 @@ public class Step {
 				+ "]";
 	}
 
-
-
-
 	public double getStep() {
 		return step;
 	}
-
 
 	public void setStep(int step) {
 		this.step = step;
 	}
 
-
 	public String getAction() {
 		return action;
 	}
-
 
 	public void setAction(String accion) {
 		this.action = accion;
 	}
 
-
 	public String getValueAction() {
 		return valueAction;
 	}
-
 
 	public void setValueAction(String valueAccion) {
 		this.valueAction = valueAccion;
 	}
 
-
 	public String getLocator() {
 		return locator;
 	}
+
 	public void setLocator(String locator) {
 		this.locator = locator;
 	}
+
 	public String getValueLocator() {
 		return valueLocator;
 	}
+
 	public void setvLocator(String vLocator) {
 		this.valueLocator = vLocator;
 	}
@@ -99,7 +91,6 @@ public class Step {
 	public void setScreenshoot(boolean screenshot) {
 		this.screenshot = screenshot;
 	}
-
 
 	public String getTcName() {
 		return tcName;
@@ -132,15 +123,19 @@ public class Step {
 	public void setDestinationLocator(String destinationLocator) {
 		this.destinationLocator = destinationLocator;
 	}
+
 	public String getDestinationLocatorValue() {
 		return destinationLocatorValue;
 	}
+
 	public void setDestinationLocatorValue(String destinationLocatorValue) {
 		this.destinationLocatorValue = destinationLocatorValue;
 	}
+
 	public double getNumericValue() {
 		return numericValue;
 	}
+
 	public void setNumericValue(double numericValue) {
 		this.numericValue = numericValue;
 	}
