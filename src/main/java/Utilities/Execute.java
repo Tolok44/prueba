@@ -14,7 +14,7 @@ public class Execute {
 		DriverManager driverManager = new DriverManager();
 		WebDriver driver;
 		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
-
+		
 		/** reads every test case in the tclist */
 		for (int x = 0; x < tcList.size(); x++) {
 			driver = new ChromeDriver();

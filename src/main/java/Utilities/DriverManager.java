@@ -26,6 +26,7 @@ public class DriverManager {
 	public static WebDriver driver;
 	public WebElement element;
 	public Select select;
+	
 
 	public DriverManager() {
 		super();
@@ -121,6 +122,7 @@ public class DriverManager {
 	 * elementCreator to create web elements and execute them
 	 */
 	public void executeStep(Step Obj) throws Exception {
+		WiniumManager winium= new WiniumManager();
 		/** Create an object to read the local time */
 		LocalDateTime locaTime = LocalDateTime.now();
 		/** Create an object to format the time */
@@ -247,8 +249,7 @@ public class DriverManager {
 			break;
 			/**this action picks a photo*/
 		case "photopicker":
-			WiniumManager winium= new WiniumManager();
-			winium.winiumManage();
+			winium.winiumManage(driver);
 			break;
 		}
 		takeSnapShot(Obj);
