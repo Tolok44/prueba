@@ -5,10 +5,11 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+/**This class iterates each of the steps in the list we receive from readxmls and sends them to the driver manager for execution
+ * in addition to creating and opening reports.*/
 public class Execute {
 	ArrayList<Step> stepList;
-
+ /**This class iterates every test case an their steps via the class driver manager, generates the reports and opens them.*/
 	public void execute(ArrayList<ArrayList> tcList) {
 
 		DriverManager driverManager = new DriverManager();
@@ -23,13 +24,13 @@ public class Execute {
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
 			driverManager1.setDriver(driver);
-			/** reads all */
+			/** step list gets a step list from tcList */
 			stepList = tcList.get(x);
-			/** itera cada paso para mandarlos al driver manager */
+			/**iterate each step to send them to the driver manager */
 			for (int i = 1; i < stepList.size(); i++) {
-				/** imprime el paso */
+				/**prints the step*/
 				System.out.println(stepList.get(i).toString());
-				// se crea un Web element y se ejecutan
+				/**a web element is created and they are executed*/
 				try {
 					driverManager1.executeStep(stepList.get(i));
 				} catch (Exception e) {
@@ -37,6 +38,7 @@ public class Execute {
 					stepList.get(i).setPass(false);
 				}
 			}
+			
 			report.reportMaker(stepList);
 		}
 

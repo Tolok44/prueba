@@ -1,7 +1,6 @@
 package testCases;
 
 import java.util.ArrayList;
-
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -10,12 +9,12 @@ import javax.swing.JRadioButton;
 import Utilities.Execute;
 import Utilities.OpenHtml;
 import Utilities.ReadXmls;
-import Utilities.Step;
+import Utilities.Step; 
 
 /** In this class the test cases are iterated and executed */
 public class TestCaseRunner {
 	public static void main(String[] args) throws Exception {
-		ArrayList<ArrayList> tcList;
+		ArrayList<ArrayList> tcList; 
 		ArrayList<Step> stepList;
 		/** Creates an OpenHtml object */
 		OpenHtml openHtml = new OpenHtml();
@@ -33,11 +32,10 @@ public class TestCaseRunner {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		/***/
+		/**sets tcList */
 		tcList = reader.getTestCases(rute);
 		/**
-		 * -------------------------------------------Menu creation for test case
-		 * selection----------
+		 * Menu creation for test case selection.
 		 */
 
 		/** This array saves the name of the test cases */
@@ -91,7 +89,7 @@ public class TestCaseRunner {
 				alCad.add(radio[t].getLabel());
 			}
 		}
-		/***/
+		/**here we save the tests cases selected in a list called tclist*/
 		int tcasesArrayInt[] = new int[alCad.size()];
 		for (int i = 0; i < alCad.size(); i++) {
 			for (int x = 0; x < cad.length; x++) {

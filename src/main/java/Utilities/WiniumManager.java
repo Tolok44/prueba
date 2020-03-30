@@ -14,16 +14,14 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.winium.DesktopOptions;
 import org.openqa.selenium.winium.WiniumDriver;
 import org.openqa.selenium.winium.WiniumDriverService;
-
+/**This class handles winium drivers to be able to select a photo. for the edit profile and project creation stories.*/
 public class WiniumManager {
 	public void winiumManage(WebDriver driver)throws InterruptedException, IOException {
-		// TODO Auto-generated method stub
 		
-		//Inicializar Winium Driver y Winium Driver Service
+		/**Initialize Winium Driver and Winium Driver Service*/
 		WiniumDriver driverW = null;
 		WiniumDriverService service = null;
-	  
-	    //Inicializar WiniumDriver Options y le damos la ruta del Driver
+	    /**Initialize Winium Driver Options and we give the path of the Driver**/
 	    DesktopOptions option = new DesktopOptions();
 	    option.setDebugConnectToRunningApp(true);
 	    File driverPath = new File("C:\\Users\\Training\\Desktop\\Prueba\\frameWorkBatch3\\driver\\Winium.Desktop.Driver.exe");
@@ -36,15 +34,9 @@ public class WiniumManager {
 	    	System.out.println("Exception while starting WINIUM service");
 	    	e.printStackTrace();
 	    }
-	    //El objeto driverW recibe el service y el option para poder usar los metodos del winium.
+	    /**The driverW object receives the service and the option to use the winium methods.*/
 	    driverW = new WiniumDriver(service,option);
-	    
-	    //ChromeDriver
-		
-//		WebElement profpic = driver.findElement(By.xpath("//a[@id='changephoto']"));
-//		profpic.click();
-		
-		Thread.sleep(2000); 
+		Thread.sleep(2000);  
 		/**Windows Automation*/
 		WebElement window = driverW.findElementByName("Open");
 		WebElement windowElem = window.findElement(By.name("Desktop"));
@@ -62,10 +54,11 @@ public class WiniumManager {
 			WebElement carpetRewindTime = driverW.findElement(By.name("RewindTime"));
 			carpetRewindTime.click();
 			window2.submit();
-
-		Thread.sleep(5000);
-		driverW.quit();//Cierra de winium
-		service.stop();//Cierra servicio de winium
+		Thread.sleep(1000);
+		/**close winium driver*/
+		driverW.quit();
+		/**close service*/
+		service.stop();
 	}
 	
 }

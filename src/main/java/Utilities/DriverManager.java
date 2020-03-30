@@ -235,7 +235,7 @@ public class DriverManager {
 		case "calendar":
 			List<WebElement> allsvg = driver.findElements(By.cssSelector("svg"));
 			for (WebElement ele : allsvg) {
-				ele.click();
+				ele.click(); 
 			}
 			break;
 		/** this action scrolls down the application */

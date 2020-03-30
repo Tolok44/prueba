@@ -15,7 +15,7 @@ public class Step {
 	public String time;
 	public String destinationLocator;
 	public String destinationLocatorValue;
-
+/**Constructor to assign step variables*/
 	public Step(String tcName, double step, String description, String accion, String vAccion, String locator,
 			String vLocator, boolean screenshot, double numericValue, boolean pass, String time,
 			String destinationLocator, String destinationLocatorValue) {
@@ -34,7 +34,7 @@ public class Step {
 		this.destinationLocatorValue = destinationLocatorValue;
 
 	}
-
+/**method to print step variables*/
 	@Override
 	public String toString() {
 		return "Step [tcName=" + tcName + ", step=" + step + ", description=" + description + ", accion=" + action
@@ -43,7 +43,7 @@ public class Step {
 				+ ", destinationLocator=" + destinationLocator + ", destinationLocatorValue=" + destinationLocatorValue
 				+ "]";
 	}
-
+/**Getters ans setters for step variables*/
 	public double getStep() {
 		return step;
 	}
@@ -67,7 +67,7 @@ public class Step {
 	public void setValueAction(String valueAccion) {
 		this.valueAction = valueAccion;
 	}
-
+ 
 	public String getLocator() {
 		return locator;
 	}

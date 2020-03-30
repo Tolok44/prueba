@@ -5,18 +5,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-/** in this method an html file is created */
+/** in this class an html file is created */
 public class ReportMaker{
 	/** Initialize FileWrite and PrintWriter to write HTML */
 	FileWriter filewriter = null;
 	PrintWriter printw = null;
 
-	/** We create a method to create a report */
+	/** This method creates a report */
 	public void reportMaker(ArrayList<Step> stepList) {
 		String tcname = "";
 		tcname = stepList.get(2).getTcName();
 		try {
-			filewriter = new FileWriter("src/main/java/reports/" + tcname + ".html");// declarar el archivo
+			filewriter = new FileWriter("src/main/java/reports/" + tcname + ".html");
 			/** Create a print object to write the html code */
 			printw = new PrintWriter(filewriter);
 			/** Initialize the html doc */
@@ -41,7 +41,7 @@ public class ReportMaker{
 					+ "            <th scope=\"col\">Status</a></th>" + "            <th scope=\"col\">Screenshots</th>"
 					+ "            <th scope=\"col\">TimeStamp</th>" + "          </tr>" + "        </thead>");
 			/** All the steps from their respective test cases are printed by a for cycle */
-			for (int i = 0; i < stepList.size(); i++) {
+			for (int i = 1; i < stepList.size(); i++) {
 				printw.println("<tbody>" + "<tr>");
 				printw.println("<th scope=\"row\">" + stepList.get(i).step + "</th>" + "<td>"
 						+ stepList.get(i).description + "</td>" + "<td>" + stepList.get(i).action + "</td>" + "<td>"
@@ -62,9 +62,12 @@ public class ReportMaker{
 			/** we close the html code. */
 			printw.println("</body>");
 			printw.println("</html>");
-			printw.close();/** we close the print object. */
-			System.out.println("Report created yay");/** If everything success will send a console message. */
-		} catch (IOException e) { /** If it fails will send a message with the exception. */
+			/** we close the print object. */
+			printw.close();
+			/** If everything success will send a console message. */
+			System.out.println("Report created yay");
+			/** If it fails will send a message with the exception. */
+		} catch (IOException e) { 
 			e.getMessage();
 		}
 	}

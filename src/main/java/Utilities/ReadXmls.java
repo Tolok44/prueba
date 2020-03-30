@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
+/**This class returns a list of steps list read from the excel file.*/
 public class ReadXmls {
 	public XSSFRow row;
-
+/**This method return the list of test cases with their respective steps*/
 	public ArrayList<ArrayList> getTestCases(String rute) throws IOException {
-		/***/
+		
 		ArrayList<ArrayList> listTC = new ArrayList();
 
 		FileInputStream fis = new FileInputStream(new File(rute));
@@ -33,7 +33,7 @@ public class ReadXmls {
 		Step aux;
 		int rows = 0;
 		int x = 0;
-		/** prints the number of test cases */
+		/** Prints the number of test cases */
 		System.out.println(workbook.getNumberOfSheets());
 		/** in this while we iterate every spreadsheet */
 		while (x <= (workbook.getNumberOfSheets() - 1)) {
@@ -59,19 +59,19 @@ public class ReadXmls {
 						tcName = workbook.getSheetName(x);
 						if (r > 0) {
 							switch (c) {
-
+							/**reads the steps*/
 							case 0:
 								Step = row.getCell(c).getNumericCellValue();
 								break;
-
+								/**reads the action*/
 							case 1:
 								action = row.getCell(c).getStringCellValue();
 								break;
-
+								/**gets the description of the step*/
 							case 2:
 								description = row.getCell(c).getStringCellValue();
 								break;
-
+								
 							case 3:
 								vAccion = row.getCell(c).getStringCellValue();
 								break;
@@ -90,7 +90,7 @@ public class ReadXmls {
 							case 7:
 								destinationLocator = row.getCell(c).getStringCellValue();
 								break;
-
+ 
 							case 8:
 								screenshot = row.getCell(c).getBooleanCellValue();
 								break;
