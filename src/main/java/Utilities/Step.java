@@ -43,7 +43,7 @@ public class Step {
 				+ ", destinationLocator=" + destinationLocator + ", destinationLocatorValue=" + destinationLocatorValue
 				+ "]";
 	}
-/**Getters ans setters for step variables*/
+/**Getters and setters for step variables*/
 	public double getStep() {
 		return step;
 	}

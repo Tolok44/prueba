@@ -21,7 +21,7 @@ public class Execute {
 			driver = new ChromeDriver();
 			DriverManager driverManager1 = new DriverManager();
 			ReportMaker report = new ReportMaker();
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(17, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
 			driverManager1.setDriver(driver);
 			/** step list gets a step list from tcList */
