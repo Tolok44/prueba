@@ -142,7 +142,7 @@ public class DriverManager {
 		/** Create a random object for later use */
 		Random random = new Random();
 		int rand = 0;
-		/** Here we read the value action */
+		/** Here we read the value action */ 
 		switch (Obj.getAction().toLowerCase()) {
 		/** Here we get a destination to navigate the driver whit */
 		case "navigate":
