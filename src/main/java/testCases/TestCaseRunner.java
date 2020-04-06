@@ -11,7 +11,7 @@ import Utilities.OpenHtml;
 import Utilities.ReadXmls;
 import Utilities.Step; 
 
-/** In this class the test cases are iterated and executed */
+/** In this class we select the excel file to read and the test cases are selected and executed. */
 public class TestCaseRunner {
 	public static void main(String[] args) throws Exception {
 		ArrayList<ArrayList> tcList; 
@@ -93,7 +93,7 @@ public class TestCaseRunner {
 		int tcasesArrayInt[] = new int[alCad.size()];
 		for (int i = 0; i < alCad.size(); i++) {
 			for (int x = 0; x < cad.length; x++) {
-				Step step = (Step) tcList.get(x).get(2);
+				Step step = (Step) tcList.get(x).get(1);
 				if (alCad.get(i).equals(step.getTcName())) {
 					tcasesArrayInt[i] = x;
 				}
@@ -113,7 +113,7 @@ public class TestCaseRunner {
 			exe.execute(tcList2);
 		} catch (Exception e) {
 			/** if there is an exception error a message is printed */
-			System.out.println(" ups something went wrong in the test case.");
+			System.out.println(" ups something went wrong in the test case,to bad.");
 		}
 		/** Here we open the created reports */
 		for (int i = 0; i < tcList2.size(); i++) {

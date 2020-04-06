@@ -3,6 +3,7 @@ package Utilities;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -122,6 +123,9 @@ public class DriverManager {
 	 * elementCreator to create web elements and execute them
 	 */
 	public void executeStep(Step Obj) throws Exception {
+		ArrayList<ArrayList> tclist;
+		ReadXmls reader = new ReadXmls();
+		Execute executer= new Execute();
 		WiniumManager winium= new WiniumManager();
 		/** Create an object to read the local time */
 		LocalDateTime locaTime = LocalDateTime.now();
@@ -251,6 +255,11 @@ public class DriverManager {
 		case "photopicker":
 			winium.winiumManage(driver);
 			break;
+		case "login":
+			System.out.println("Executing login Script, so exciting!");
+			tclist=	reader.getTestCases("excel/ActionsScripts.xlsx");
+			executer.executetc(tclist.get(0));
+		break;
 		}
 		takeSnapShot(Obj);
 	}

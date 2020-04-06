@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-/** in this class an html file is created */
+/** in this class an html file is created with the steps of step list */
 public class ReportMaker{
 	/** Initialize FileWrite and PrintWriter to write HTML */
 	FileWriter filewriter = null;

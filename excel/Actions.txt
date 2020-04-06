@@ -18,3 +18,4 @@ dragndrop		/**this action creates a dragndrop element an moves one element to a 
 randuser		/**this action creates a random user*/
 randemail		/**this action creates a random email*/
 photopicker		/**this action picks a photo*/
+login			/**Makes a login*/
