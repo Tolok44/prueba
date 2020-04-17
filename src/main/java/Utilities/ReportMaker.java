@@ -13,16 +13,17 @@ public class ReportMaker{
 
 	/** This method creates a report */
 	public void reportMaker(ArrayList<Step> stepList) {
-		String tcname = "";
-		tcname = stepList.get(2).getTcName();
+		String time=stepList.get(2).getTime();
+		String tcname = stepList.get(2).getTcName();
+		time =time.replace(":", "-");
 		try {
-			filewriter = new FileWriter("src/main/java/reports/" + tcname + ".html");
+			filewriter = new FileWriter("src/main/java/reports/" + tcname+" "+time+ ".html");
 			/** Create a print object to write the html code */
 			printw = new PrintWriter(filewriter);
 			/** Initialize the html doc */
 			printw.println("<html>");
 			printw.println(
-					"<head><title>Report " + tcname + "</title> " + "<link rel=\"icon\" href=\"../img/Thanos.png\" />"
+					"<head><title>"+ tcname +" "+ time + "</title> " + "<link rel=\"icon\" href=\"../img/Thanos.png\" />"
 							+ "<link rel=\"stylesheet\" href=\"../css/bootstrap.min.css\">"
 							+ "<link rel=\"stylesheet\" href=\"../css/estilos.css\">"
 							+ "<script src=\"../js/jquery-3.4.1.min.js\"></script>"
@@ -68,6 +69,7 @@ public class ReportMaker{
 			System.out.println("Report created yay");
 			/** If it fails will send a message with the exception. */
 		} catch (IOException e) { 
+			System.out.println("Error creating report");
 			e.getMessage();
 		}
 	}

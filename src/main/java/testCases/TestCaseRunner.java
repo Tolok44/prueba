@@ -9,12 +9,15 @@ import javax.swing.JRadioButton;
 import Utilities.Execute;
 import Utilities.OpenHtml;
 import Utilities.ReadXmls;
-import Utilities.Step; 
+import Utilities.Step;
 
-/** In this class we select the excel file to read and the test cases are selected and executed. */
+/**
+ * In this class we select the excel file to read and the test cases are
+ * selected and executed.
+ */
 public class TestCaseRunner {
 	public static void main(String[] args) throws Exception {
-		ArrayList<ArrayList> tcList; 
+		ArrayList<ArrayList> tcList;
 		ArrayList<Step> stepList;
 		/** Creates an OpenHtml object */
 		OpenHtml openHtml = new OpenHtml();
@@ -32,7 +35,7 @@ public class TestCaseRunner {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		/**sets tcList */
+		/** sets tcList */
 		tcList = reader.getTestCases(rute);
 		/**
 		 * Menu creation for test case selection.
@@ -89,7 +92,7 @@ public class TestCaseRunner {
 				alCad.add(radio[t].getLabel());
 			}
 		}
-		/**here we save the tests cases selected in a list called tclist*/
+		/** here we save the tests cases selected in a list called tclist */
 		int tcasesArrayInt[] = new int[alCad.size()];
 		for (int i = 0; i < alCad.size(); i++) {
 			for (int x = 0; x < cad.length; x++) {
@@ -117,9 +120,11 @@ public class TestCaseRunner {
 		}
 		/** Here we open the created reports */
 		for (int i = 0; i < tcList2.size(); i++) {
-			Step pasoPrueba = (Step) tcList2.get(i).get(i);
-			System.out.println(pasoPrueba.getTcName());
-			openHtml.OpenHtml(pasoPrueba.getTcName());
+			Step testStep = (Step) tcList2.get(i).get(2);
+			String time = testStep.getTime();
+			 time= time.replace(":", "-");
+			System.out.println(testStep.getTcName()+" "+time);
+			openHtml.OpenHtml(testStep.getTcName()+" "+time);
 		}
 	}
 }

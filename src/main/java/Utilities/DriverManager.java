@@ -24,10 +24,11 @@ import org.apache.commons.io.FileUtils;
  * This class manages the driver, has all the actions and screenshots methods
  */
 public class DriverManager {
+	/** Create a boolean for later use */
+	boolean confirm = false;
 	public static WebDriver driver;
 	public WebElement element;
 	public Select select;
-	
 
 	public DriverManager() {
 		super();
@@ -63,6 +64,7 @@ public class DriverManager {
 		case "tagName":
 			element = driver.findElement(By.tagName(Obj.getValueLocator()));
 			break;
+			
 		}
 
 		return element;
@@ -93,11 +95,13 @@ public class DriverManager {
 		case "tagName":
 			element = driver.findElement(By.tagName(Obj.getDestinationLocatorValue()));
 			break;
+			
 		}
 
 		return element;
 
 	}
+
 	/** This method Takes a screenshot */
 	public static void takeSnapShot(Step Obj) throws Exception {
 		if (Obj.getScreenshoot() == true) {
@@ -117,16 +121,50 @@ public class DriverManager {
 			System.out.print("Screenshot taken ");
 		}
 	}
+	public void checkParameters(Step Obj) {
+		Parameter parameterAux;
+		ArrayList parameters=Obj.getParameters();
+		try {
+			for(int i=0;i<=parameters.size();i++) {
+				parameterAux=(Parameter) parameters.get(i);
+				if(Obj.getValueAction().equalsIgnoreCase(parameterAux.getName())) {
+					Obj.setValueAction(parameterAux.getValue());
+				}
+			}
+			}catch(Exception e) {
+			System.out.println("bummer something went wrong executing parameters.");
+			}
+	}
+	public void checkObjects(Step Obj) {
+		Object objectAux;
+		ArrayList objects=Obj.getObjects();
+		try {
+			for(int i=0;i<=objects.size();i++) {
+				objectAux=(Object)objects.get(i);
+				if(Obj.getLocator().equalsIgnoreCase(objectAux.getName())) {
+					Obj.setLocator(objectAux.getLocator());
+					Obj.setvLocator(objectAux.getValueLocator());
+				}else if(Obj.getDestinationLocator().equalsIgnoreCase(objectAux.getName())) {
+					Obj.setDestinationLocator(objectAux.getLocator());
+					Obj.setDestinationLocatorValue(objectAux.getValueLocator());
+				}
+			}
+			}catch(Exception e) {
+			System.out.println("ups we are not using objects.");
+			}
+	}
 
 	/**
 	 * This method reads the action from the object step, and call the methods
 	 * elementCreator to create web elements and execute them
 	 */
 	public void executeStep(Step Obj) throws Exception {
+		checkParameters(Obj);
+		checkObjects(Obj);
 		ArrayList<ArrayList> tclist;
 		ReadXmls reader = new ReadXmls();
-		Execute executer= new Execute();
-		WiniumManager winium= new WiniumManager();
+		Execute executer = new Execute();
+		WiniumManager winium = new WiniumManager();
 		/** Create an object to read the local time */
 		LocalDateTime locaTime = LocalDateTime.now();
 		/** Create an object to format the time */
@@ -138,15 +176,12 @@ public class DriverManager {
 		/** A auxiliary Web element is created for later use */
 		WebElement auxElement = elementCreator(Obj);
 		/** an integer is created for later use */
-		int num = (int) Obj.getNumericValue();
 		/** Create an action for later use */
 		Actions action = new Actions(driver);
-		/** Create a boolean for later use */
-		boolean confirm = false;
 		/** Create a random object for later use */
 		Random random = new Random();
 		int rand = 0;
-		/** Here we read the value action */ 
+		/** Here we read the action */
 		switch (Obj.getAction().toLowerCase()) {
 		/** Here we get a destination to navigate the driver whit */
 		case "navigate":
@@ -159,13 +194,7 @@ public class DriverManager {
 		/** the action type sends keys to a web element */
 		case "type":
 			auxElement.sendKeys(Obj.getValueAction());
-			break;
-		/** in this action we can type a numeric value */
-		case "typenumeric":
-			String numeric = Obj.numericValue + "";
-			String ignoredotcero = numeric.replace(".0", "");
-			auxElement.sendKeys(ignoredotcero);
-			break;
+			break;			
 		/** in this action the element makes a click */
 		case "click":
 			auxElement.click();
@@ -239,7 +268,7 @@ public class DriverManager {
 		case "calendar":
 			List<WebElement> allsvg = driver.findElements(By.cssSelector("svg"));
 			for (WebElement ele : allsvg) {
-				ele.click(); 
+				ele.click();
 			}
 			break;
 		/** this action scrolls down the application */
@@ -251,16 +280,17 @@ public class DriverManager {
 		case "refresh1":
 			driver.navigate().refresh();
 			break;
-			/**this action picks a photo*/
+		/** this action picks a photo */
 		case "photopicker":
 			winium.winiumManage(driver);
 			break;
 		case "login":
 			System.out.println("Executing login Script, so exciting!");
-			tclist=	reader.getTestCases("excel/ActionsScripts.xlsx");
+			tclist = reader.getTestCases("excel/ActionsScripts.xlsx");
 			executer.executetc(tclist.get(0));
-		break;
+			break;
 		}
+		
 		takeSnapShot(Obj);
 	}
 
