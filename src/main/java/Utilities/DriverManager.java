@@ -286,7 +286,8 @@ public class DriverManager {
 			break;
 		case "login":
 			System.out.println("Executing login Script, so exciting!");
-			tclist = reader.getTestCases("excel/ActionsScripts.xlsx");
+			tclist = reader.getTestCases("excel/ActionScripts.xlsx");
+			System.out.println(tclist.get(0).toString()+"script bad");
 			executer.executetc(tclist.get(0));
 			break;
 		}
