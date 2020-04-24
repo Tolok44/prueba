@@ -47,6 +47,12 @@ public Step(String tcName, double step, String description, String action, Strin
 
 
 
+public Step() {
+	// TODO Auto-generated constructor stub
+}
+
+
+
 @Override
 public String toString() {
 	return "Step [tcName=" + tcName + ", step=" + step + ", description=" + description + ", action=" + action

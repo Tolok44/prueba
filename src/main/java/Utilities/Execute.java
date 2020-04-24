@@ -46,6 +46,7 @@ public class Execute {
 			System.out.println(stepList.get(i).toString());
 			/**a web element is created and they are executed*/
 			try {
+				
 				driverManager1.executeStep((Step) stepList.get(i));
 			} catch (Exception e) {
 				try {

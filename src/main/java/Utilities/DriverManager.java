@@ -1,6 +1,7 @@
 package Utilities;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -153,7 +154,31 @@ public class DriverManager {
 			System.out.println("ups we are not using objects.");
 			}
 	}
-
+	public void checkActions(Step Obj) {
+		ArrayList<ArrayList> tclist = null;
+		ReadXmls reader = new ReadXmls();
+		Execute executer = new Execute();
+		Step stepAux= new Step();
+		try {
+			tclist = reader.getTestCases("excel/ActionScripts.xlsx");
+			for(int i=0;i<=tclist.size();i++) {
+				stepAux=(Step) tclist.get(i).get(2);
+				if(stepAux.getTcName().equalsIgnoreCase(Obj.getValueAction())) {
+					try {
+					executer.executetc(tclist.get(i));
+					} catch (Exception e) {
+						System.out.println("Error reading scipts");
+						e.printStackTrace();
+					}
+			}
+		}
+		} catch (IOException e) {
+			System.out.println("Error reading scipts");
+			e.printStackTrace();
+		}
+		
+	}
+	
 	/**
 	 * This method reads the action from the object step, and call the methods
 	 * elementCreator to create web elements and execute them
@@ -161,9 +186,7 @@ public class DriverManager {
 	public void executeStep(Step Obj) throws Exception {
 		checkParameters(Obj);
 		checkObjects(Obj);
-		ArrayList<ArrayList> tclist;
-		ReadXmls reader = new ReadXmls();
-		Execute executer = new Execute();
+		
 		WiniumManager winium = new WiniumManager();
 		/** Create an object to read the local time */
 		LocalDateTime locaTime = LocalDateTime.now();
@@ -219,6 +242,7 @@ public class DriverManager {
 			break;
 		/** this action closes an alert */
 		case "alert":
+			Thread.sleep(3000);
 			driver.switchTo().alert().accept();
 			break;
 		/** this action confirms that a element exists or not */
@@ -284,12 +308,12 @@ public class DriverManager {
 		case "photopicker":
 			winium.winiumManage(driver);
 			break;
-		case "login":
-			System.out.println("Executing login Script, so exciting!");
-			tclist = reader.getTestCases("excel/ActionScripts.xlsx");
-			System.out.println(tclist.get(0).toString()+"script bad");
-			executer.executetc(tclist.get(0));
+		case "scriptexe":
+			
+			System.out.println("executing script");
+			checkActions(Obj);
 			break;
+			
 		}
 		
 		takeSnapShot(Obj);

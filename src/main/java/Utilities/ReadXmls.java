@@ -33,6 +33,7 @@ public class ReadXmls {
 		ArrayList parameters = null;
 		ArrayList objects = null;
 		Step aux;
+		
 		int rows = 0;
 		int x = 0;
 		/** Prints the number of test cases */
@@ -52,12 +53,12 @@ public class ReadXmls {
 			try {
 				parameters = getParameters(workbook.getSheet("Parameters"));
 			} catch (Exception e) {
-				System.out.println("Error reading parameters, check the sheet name is 'Parameters'.");
+				//System.out.println("Error reading parameters, check the sheet name is 'Parameters'.");
 			}
 			try {
 				objects = getObjects(workbook.getSheet("Objects"));
 			} catch (Exception e) {
-				System.out.println("Error reading parameters, check the sheet name is 'Objects'.");
+				//System.out.println("Error reading parameters, check the sheet name is 'Objects'.");
 			}
 
 			File directory = new File("Screenshots/" + workbook.getSheetName(x));
