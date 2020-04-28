@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 /**This class iterates each of the steps in the list we receive from readxmls and sends them to the driver manager for execution
  * in addition to creating and opening reports.*/
 public class Execute {
@@ -16,11 +17,11 @@ public class Execute {
 
 		DriverManager driverManager = new DriverManager();
 		WebDriver driver;
-		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+		System.setProperty("webdriver.gecko.driver", "driver/geckodriver.exe");
 		
 		/** reads every test case in the tclist */
 		for (int x = 0; x < tcList.size(); x++) {
-			driver = new ChromeDriver();
+			driver = new FirefoxDriver();
 			ReportMaker report = new ReportMaker();
 			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 			driver.manage().window().maximize();

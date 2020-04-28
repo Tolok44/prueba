@@ -1,5 +1,8 @@
 package Utilities;
 
+import java.awt.Point;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -16,10 +19,12 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
 
 /**
  * This class manages the driver, has all the actions and screenshots methods
@@ -286,7 +291,12 @@ public class DriverManager {
 		 */
 		case "dragndrop":
 			WebElement to = elementCreatorDrag(Obj);
-			action.dragAndDrop(auxElement, to).build().perform();
+			Thread.sleep(2000);
+		    action.dragAndDrop(auxElement, to).release().build().perform();
+		    Robot robot = new Robot();
+		    robot.keyPress(KeyEvent.VK_ESCAPE);
+		    robot.keyRelease(KeyEvent.VK_ESCAPE);
+			Thread.sleep(2000);
 			break;
 		/** this action opens the start date calendar */
 		case "calendar":
@@ -297,8 +307,8 @@ public class DriverManager {
 			break;
 		/** this action scrolls down the application */
 		case "scroll":
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("window.scrollBy(0,1000)");
+			JavascriptExecutor js2 = (JavascriptExecutor) driver;
+			js2.executeScript("window.scrollBy(0,1000)");
 			break;
 		/** action to refresh the web page */
 		case "refresh1":
