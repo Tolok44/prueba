@@ -319,9 +319,12 @@ public class DriverManager {
 			winium.winiumManage(driver);
 			break;
 		case "scriptexe":
-			
+			try {
 			System.out.println("executing script");
 			checkActions(Obj);
+			}catch(Exception e) {
+				
+			}
 			break;
 			
 		}
